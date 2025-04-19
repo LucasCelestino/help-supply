@@ -19,10 +19,10 @@
     <div class="login-wrapper rounded py-3 px-4">
         <h1 class="text-center title text-white text-uppercase fw-bold">HelpSupply</h1>
         <p class="text-center subtitle text-white">Sistema para gerenciamento de fornecimentos</p>
-        <form>
+        <form method="POST" action="/login">
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label text-white">Usuário</label>
-                <input type="email" class="form-control py-2" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Digite seu nome de usuário...">
+                <input type="text" class="form-control py-2" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Digite seu nome de usuário...">
             </div>
             <div class="mb-4">
                 <label for="exampleInputPassword1" class="form-label text-white">Senha</label>
