@@ -4,6 +4,7 @@ namespace App\Controllers\Web;
 
 use App\Models\Model;
 use League\Plates\Engine;
+use App\Core\Session;
 
 abstract class Controller
 {
@@ -31,5 +32,12 @@ abstract class Controller
     {
         $model = "\App\Models\\".$model;
         return new $model();
+    }
+
+    protected function session()
+    {
+        $session = new Session();
+
+        return $session;
     }
 }

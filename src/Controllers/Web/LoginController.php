@@ -12,7 +12,42 @@ class LoginController extends Controller
      */
     public function index()
     {
-        $this->render('login', 'login.index', []);
+        if(!isset($_SESSION['user_auth']) || empty($_SESSION['user_auth']))
+        {
+            $this->render('login', 'login.index', []);
+        }
+
+        header("Location: home");
+
+        die();
+    }
+
+    public function login()
+    {
+        if(isset($_POST['action']))
+        {
+            $username = $_POST['username'];
+            $password = $_POST['password'];
+
+            $user = $this->model('UserModel');
+
+            $findedUser = $user->find($username);
+
+            if(password_verify($password, $findedUser->password))
+            {
+                $session = $this->session();
+
+                $session->set("user_auth", [$findedUser->name, $findedUser->password]);
+
+                header("Location: home");
+
+                die();
+            }
+            else
+            {
+                echo 'senhas não conferem';
+            }
+        }
     }
 
 

@@ -7,7 +7,7 @@ class Session
     /**
      * @return bool
      */
-    private static function startSession(): bool
+    public static function startSession()
     {
         if (!session_id()) {
             return session_start();
@@ -30,7 +30,7 @@ class Session
      *
      * @return Session
      */
-    public static function set(string $key, $value): Session
+    public static function set(string $key, $value)
     {
         self::startSession();
 

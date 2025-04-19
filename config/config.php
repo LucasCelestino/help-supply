@@ -10,7 +10,7 @@ define('URL_SUBFOLDER', '/');
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
 define('DB_PASS', '');
-define('DB_NAME', 'mvc-framework');
+define('DB_NAME', 'helpsupply');
 
 // EMAIL Params
 define('MAIL_USERNAME', 'email@email.com');

@@ -4,13 +4,19 @@ require ('vendor/autoload.php');
 require('config/config.php');
 
 use CoffeeCode\Router\Router;
+use App\Core\Session;
+
+$session = new Session();
+
+$session->startSession();
 
 $router = new Router(APP_URL);
 
 $router->namespace("App\Controllers\Web");
 
-$router->get("/", "HomeController:index");
+$router->get("/home", "HomeController:index");
 $router->get("/login", "LoginController:index");
+$router->post("/login", "LoginController:login");
 // $router->get("/users/{id}", "UserController:show");
 
 $router->get("/users/create", "UserController:create");

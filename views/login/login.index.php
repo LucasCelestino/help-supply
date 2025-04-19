@@ -19,16 +19,16 @@
     <div class="login-wrapper rounded py-3 px-4">
         <h1 class="text-center title text-white text-uppercase fw-bold">HelpSupply</h1>
         <p class="text-center subtitle text-white">Sistema para gerenciamento de fornecimentos</p>
-        <form method="POST" action="/login">
+        <form action="/mvc-structure-main/login" method="POST">
             <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label text-white">Usuário</label>
-                <input type="text" class="form-control py-2" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Digite seu nome de usuário...">
+                <label for="username" class="form-label text-white">Usuário</label>
+                <input type="text" class="form-control py-2" name="username" id="username" aria-describedby="username" placeholder="Digite seu nome de usuário...">
             </div>
             <div class="mb-4">
-                <label for="exampleInputPassword1" class="form-label text-white">Senha</label>
-                <input type="password" class="form-control py-2" id="exampleInputPassword1" placeholder="Digite sua senha...">
+                <label for="password" class="form-label text-white">Senha</label>
+                <input type="password" class="form-control py-2" name="password" id="password" placeholder="Digite sua senha...">
             </div>
-            <button type="submit" class="btn btn-login w-100 text-white" style="background-color:rgb(15, 15, 15) !important;">Entrar</button>
+            <button type="submit" class="btn btn-login w-100 text-white" name="action" style="background-color:rgb(15, 15, 15) !important;">Entrar</button>
         </form>
     </div>
 

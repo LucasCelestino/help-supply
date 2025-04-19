@@ -17,7 +17,9 @@ class HomeController extends Controller
             header("Location: login");
             die();
         }
-        // $this->render('users', 'users.index', ['name'=>'Dev']);
+
+
+        $this->render('users', 'users.index', ['name'=>'Lucas']);
     }
 
 
