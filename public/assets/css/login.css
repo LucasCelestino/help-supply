@@ -1,0 +1,50 @@
+body,html
+{
+    background-color: #0D0D0D !important;
+    height: 100%;
+}
+
+form
+{
+    font-family: "Montserrat", sans-serif !important;
+}
+
+form label
+{
+    font-size: 13px;
+}
+
+form input
+{
+    background-color: #1A1A1A !important;
+    border-color: #393939 !important;
+    font-size: 13px !important;
+}
+
+.login-wrapper
+{
+    width: 400px;
+    height: 350px;
+    background-color: #1A1A1A;
+}
+
+.title
+{
+    font-size: 30px;
+}
+
+.subtitle
+{
+    font-size: 13px;
+}
+
+.title,.subtitle
+{
+    font-family: "Montserrat", sans-serif !important;
+}
+
+.btn-login
+{
+    font-size: 15px !important;
+    font-family: "Montserrat", sans-serif !important;
+}

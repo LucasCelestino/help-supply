@@ -12,7 +12,7 @@ class LoginController extends Controller
      */
     public function index()
     {
-        $this->render('users', 'users.index', ['name'=>'Login']);
+        $this->render('login', 'login.index', []);
     }
 
 
