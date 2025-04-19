@@ -1,0 +1,110 @@
+/* AREA DE CONTEUDO */
+
+.home-title-content h2
+{
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: "Montserrat", sans-serif;
+}
+
+.home-last-infos-content .item
+{
+    width: 280px;
+    height: 200px;
+    background-color: #1A1A1A;
+    border: 1px solid #363636;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: "Montserrat", sans-serif;
+}
+
+.home-last-suppliers .table
+{
+    font-family: "Montserrat", sans-serif;
+    border: none !important;
+    width: 100%;
+}
+
+.home-last-suppliers thead tr th
+{
+    color: #FFF;
+    background-color: #0E0E0E !important;
+    border: none !important;
+}
+
+.home-last-suppliers tbody tr th,td
+{
+    background-color: #1A1A1A !important;
+    color: #FFF !important;
+}
+
+.home-last-suppliers tbody tr
+{
+    border-bottom: 1.5px solid #363636;
+}
+
+.home-last-suppliers .title
+{
+    background-color: #1A1A1A;
+    font-size: 10px;
+}
+
+.home-last-suppliers h2
+{
+    font-size: 14px;
+    font-family: "Montserrat", sans-serif;
+    text-transform: uppercase;
+}
+
+.home-last-suppliers tbody tr .infos
+{
+    width: 130px;
+}
+
+.home-last-suppliers tbody tr td p
+{
+    text-align: center;
+    border-radius: 10px;
+}
+
+.home-last-suppliers tbody tr td .recebido
+{
+    background-color: #1F7A22;
+}
+
+.home-last-suppliers tbody tr td .aguardando
+{
+    background-color: #B70000;
+}
+
+.home-last-suppliers tbody tr td a
+{
+    text-decoration: none;
+    color: #FFF;
+    padding: 4px 4px;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+.btn-lasts-cards:nth-of-type(1)
+{
+    margin-right: 20px;
+}
+
+.home-last-cards .cards-wrapper .card
+{
+    background-color: #1A1A1A !important;
+}
+
+.sdsodokds
+{
+    height: 20px;
+    font-weight: bold;
+    font-family: "Montserrat", sans-serif !important;
+}
+
+.title-card-last-infos
+{
+    font-size: 24px;
+}

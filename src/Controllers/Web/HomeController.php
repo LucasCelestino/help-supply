@@ -18,10 +18,10 @@ class HomeController extends Controller
             die();
         }
 
+        
 
-        $this->render('users', 'users.index', ['name'=>'Lucas']);
+        $this->render('home', 'home.index', []);
     }
-
 
     /**
      * Display the specified resource.

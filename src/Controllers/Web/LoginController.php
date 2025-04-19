@@ -12,14 +12,13 @@ class LoginController extends Controller
      */
     public function index()
     {
-        if(!isset($_SESSION['user_auth']) || empty($_SESSION['user_auth']))
+        if(isset($_SESSION['user_auth']) || !empty($_SESSION['user_auth']))
         {
-            $this->render('login', 'login.index', []);
+            header("Location: home");
+            die();
         }
 
-        header("Location: home");
-
-        die();
+        $this->render('login', 'login.index', []);
     }
 
     public function login()
@@ -48,6 +47,22 @@ class LoginController extends Controller
                 echo 'senhas não conferem';
             }
         }
+    }
+
+    public function loggout()
+    {
+        if(isset($_SESSION['user_auth']) && !empty($_SESSION['user_auth']))
+        {
+            $session = $this->session();
+
+            $session->unset("user_auth");
+
+            header("Location: home");
+
+            die();
+        }
+
+        $this->render('login', 'login.index', []);
     }
 
 

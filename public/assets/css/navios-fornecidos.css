@@ -1,0 +1,66 @@
+.dfkdfk input
+{
+    width: 270px;
+    border: none;
+    border: 1px solid #393939;
+    background-color: #2B2B2B;
+    padding: 5px 5px;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    font-size: 13px;
+    font-family: "Montserrat", sans-serif !important;
+    color: #FFF;
+}
+
+.dfkdfk button
+{
+    border: none;
+    background-color: #2B2B2B;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border: 1px solid #393939;
+}
+
+.dfkdfk img
+{
+    padding: 2px;
+    height: 27px;
+    width: 27px;
+}
+
+.paginacao-item
+{
+    background-color: #232323 !important;
+    border: none !important;
+    border: 1px solid #363636 !important;  
+    color: #7D7D7D !important;    
+}
+
+.form-add-fornecimento-wrapper
+{
+    font-family: "Montserrat", sans-serif !important;
+    background-color: #1A1A1A;
+}
+
+.form-add-fornecimento-wrapper .head a,p
+{
+    font-size: 14px;
+}
+
+.form-add-fornecimento-wrapper form .form-group input,select
+{
+    background-color: #0E0E0E !important;
+    border: 1px solid #393939 !important;
+}
+
+.form-add-fornecimento-wrapper form .form-group select
+{
+    font-size: 13px;
+    height: 34px;
+}
+
+.info-wrapper
+{
+    background-color: #0E0E0E !important;
+    border: 1px solid #393939;
+}

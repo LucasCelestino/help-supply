@@ -53,9 +53,9 @@ class UserModel extends Model
      *
      * @return UserModel|null
      */
-    public function find(string $name, string $columns = '*'): ?UserModel
+    public function find(string $login, string $columns = '*'): ?UserModel
     {
-        $find = $this->read("SELECT {$columns} FROM ".self::$entity." WHERE name = :name", "name={$name}");
+        $find = $this->read("SELECT {$columns} FROM ".self::$entity." WHERE login = :login", "login={$login}");
 
         if($this->fail() || !$find->rowCount())
         {

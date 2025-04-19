@@ -1,0 +1,50 @@
+.main-color
+{
+    background-color: #1A1A1A !important;
+}
+
+.border-menu
+{
+    border-bottom: 1px solid #2B2B2B; width: 143%;
+}
+
+.item-menu a
+{
+    font-size: 12px !important;
+}
+
+.item-menu a:hover
+{
+    color: rgb(139, 139, 139) !important;
+}
+
+.input-group .input-search-menu
+{
+    background-color: #2B2B2B;
+    border: 1px solid #363636;
+    padding: 3px 10px;
+    border-top-left-radius: 8px !important;
+    border-bottom-left-radius: 8px !important;
+    max-width: 200px !important;
+    width: 100%;
+    color: #FFF;
+}
+
+.button-search-menu button
+{
+    width: 38px; 
+    border: 1px solid #363636; 
+    background-color: #2B2B2B;
+    border-top-right-radius: 8px !important;
+    border-bottom-right-radius: 8px !important;
+}
+
+.menu-wrapper
+{
+    font-family: "Open Sans", sans-serif !important;
+}
+
+.font-modify-mont
+{
+    font-family: "Montserrat", sans-serif !important;
+}
