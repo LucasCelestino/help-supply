@@ -146,7 +146,7 @@
                             <td><?=$lastSupply->acronym;?></td>
                             <td><?=$lastSupply->harbor;?></td>
                             <td><?=$lastSupply->type;?></td>
-                            <td><?=$lastSupply->supply_date;?></td>
+                            <td><?=date('d/m/Y', strtotime($lastSupply->supply_date));?></td>
                             <td class="infos">
                                 <?php if($lastSupply->status == 0): ?>
                                     <p class="p-0 m-0 bg-success">Recebido</p>
@@ -176,7 +176,7 @@
                         <div class="card py-3 text-white" style="width: 18rem; margin-right:30px;">
                             <div class="card-body">
                               <h5 class="card-title"><?=$lastReminder->reminder;?></h5>
-                              <p class="card-text">Criado em: <?=$lastReminder->created_at;?></p>
+                              <p class="card-text">Criado em: <?=date('d/m/Y', strtotime($lastReminder->created_at));?></p>
                               <div class="d-flex">
                                 <a href="#" class="btn btn-danger btn-lasts-cards">Editar</a>
                                 <a href="#" class="btn btn-warning btn-lasts-cards">Excluir</a>
