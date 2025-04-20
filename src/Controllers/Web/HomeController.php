@@ -31,7 +31,7 @@ class HomeController extends Controller
 
         $reminders = $this->model('RemindersModel');
 
-        $lastReminders = $reminders->all(1);
+        $lastReminders = $reminders->all(1, 3);
 
         $this->render('home', 'home.index', [
         'folders_with_racine'=>$racineFolders,
