@@ -27,7 +27,7 @@ class HomeController extends Controller
 
         $ship = $this->model('ShipModel');
 
-        $lastSupplies = $ship->all(10,0,'id,name,acronym,harbor,type,supply_date,status');
+        $lastSupplies = $ship->all(10,0);
 
         $reminders = $this->model('RemindersModel');
 

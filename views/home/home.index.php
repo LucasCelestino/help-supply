@@ -142,10 +142,10 @@
                           <?php foreach($last_supplies as $lastSupply): ?>
                           <tr>
                             <th scope="row" class="px-3"><?=$lastSupply->id;?></th>
-                            <td><?=$lastSupply->name;?></td>
+                            <td class="text-uppercase"><?=$lastSupply->ship_name;?></td>
                             <td><?=$lastSupply->acronym;?></td>
                             <td><?=$lastSupply->harbor;?></td>
-                            <td><?=$lastSupply->type;?></td>
+                            <td><?=$lastSupply->ship_type_name;?></td>
                             <td><?=date('d/m/Y', strtotime($lastSupply->supply_date));?></td>
                             <td class="infos">
                                 <?php if($lastSupply->status == 0): ?>
