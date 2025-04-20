@@ -25,10 +25,15 @@ class HomeController extends Controller
         $sendFolders = $folder->findByStatus(6) != null ? count($folder->findByStatus(6)) : 0;
         $foldersWithPendings = $folder->findByStatus(5) != null ? count($folder->findByStatus(5)) : 0;
 
+        $ship = $this->model('ShipModel');
+
+        $lastSupplies = $ship->all(10,0,'id,name,acronym,harbor,type,supply_date,status');
+
         $this->render('home', 'home.index', [
         'folders_with_racine'=>$racineFolders,
         'folders_send'=>$sendFolders,
-        'folders_with_pendings'=>$foldersWithPendings
+        'folders_with_pendings'=>$foldersWithPendings,
+        'last_supplies'=>$lastSupplies
         ]);
     }
 

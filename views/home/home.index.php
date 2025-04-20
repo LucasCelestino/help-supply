@@ -137,149 +137,34 @@
                             <th>Opções</th>
                           </tr>
                         </thead>
+                        <?php if(isset($last_supplies) && !empty($last_supplies)): ?>
                         <tbody>
+                          <?php foreach($last_supplies as $lastSupply): ?>
                           <tr>
-                            <th scope="row" class="px-3">1</th>
-                            <td>Cape Town Eagle</td>
-                            <td>S-2291</td>
-                            <td>Santos</td>
-                            <td>T+P+B</td>
-                            <td>10 de Outubro de 2024</td>
+                            <th scope="row" class="px-3"><?=$lastSupply->id;?></th>
+                            <td><?=$lastSupply->name;?></td>
+                            <td><?=$lastSupply->acronym;?></td>
+                            <td><?=$lastSupply->harbor;?></td>
+                            <td><?=$lastSupply->type;?></td>
+                            <td><?=$lastSupply->supply_date;?></td>
                             <td class="infos">
-                                <p class="p-0 m-0 bg-success">Recebido</p>
+                                <?php if($lastSupply->status == 0): ?>
+                                    <p class="p-0 m-0 bg-success">Recebido</p>
+                                <?php else: ?>
+                                    <p class="p-0 m-0 bg-danger">Aguardando</p>
+                                <?php endif; ?>
                             </td>
                             <td class="infos">
                                 <a href="#">Ver detalhes</a>
                             </td>
                           </tr>
-                          <tr>
-                            <th scope="row" class="px-3">2</th>
-                            <td>Cape Town Eagle</td>
-                            <td>S-2291</td>
-                            <td>Santos</td>
-                            <td>T+P+B</td>
-                            <td>10 de Outubro de 2024</td>
-                            <td>
-                                <p class="p-0 m-0 bg-danger">Aguardando</p>
-                            </td>
-                            <td>
-                                <a href="#">Ver detalhes</a>
-                            </td>
-                          </tr>
-                          <tr>
-                            <th scope="row" class="px-3">3</th>
-                            <td>Cape Town Eagle</td>
-                            <td>S-2291</td>
-                            <td>Santos</td>
-                            <td>T+P+B</td>
-                            <td>10 de Outubro de 2024</td>
-                            <td>
-                                <p class="p-0 m-0 bg-success">Recebido</p>
-                            </td>
-                            <td>
-                                <a href="#">Ver detalhes</a>
-                            </td>
-                          </tr>
-                          <tr>
-                            <th scope="row" class="px-3">4</th>
-                            <td>Cape Town Eagle</td>
-                            <td>S-2291</td>
-                            <td>Santos</td>
-                            <td>T+P+B</td>
-                            <td>10 de Outubro de 2024</td>
-                            <td>
-                                <p class="p-0 m-0 bg-success">Recebido</p>
-                            </td>
-                            <td>
-                                <a href="#">Ver detalhes</a>
-                            </td>
-                          </tr>
-                          <tr>
-                            <th scope="row" class="px-3">5</th>
-                            <td>Cape Town Eagle</td>
-                            <td>S-2291</td>
-                            <td>Santos</td>
-                            <td>T+P+B</td>
-                            <td>10 de Outubro de 2024</td>
-                            <td>
-                                <p class="p-0 m-0 bg-danger">Aguardando</p>
-                            </td>
-                            <td>
-                                <a href="#">Ver detalhes</a>
-                            </td>
-                          </tr>
-                          <tr>
-                            <th scope="row" class="px-3">6</th>
-                            <td>Cape Town Eagle</td>
-                            <td>S-2291</td>
-                            <td>Santos</td>
-                            <td>T+P+B</td>
-                            <td>10 de Outubro de 2024</td>
-                            <td>
-                                <p class="p-0 m-0 bg-danger">Aguardando</p>
-                            </td>
-                            <td>
-                                <a href="#">Ver detalhes</a>
-                            </td>
-                          </tr>
-                          <tr>
-                            <th scope="row" class="px-3">7</th>
-                            <td>Cape Town Eagle</td>
-                            <td>S-2291</td>
-                            <td>Santos</td>
-                            <td>T+P+B</td>
-                            <td>10 de Outubro de 2024</td>
-                            <td>
-                                <p class="p-0 m-0 bg-success">Recebido</p>
-                            </td>
-                            <td>
-                                <a href="#">Ver detalhes</a>
-                            </td>
-                          </tr>
-                          <tr>
-                            <th scope="row" class="px-3">8</th>
-                            <td>Cape Town Eagle</td>
-                            <td>S-2291</td>
-                            <td>Santos</td>
-                            <td>T+P+B</td>
-                            <td>10 de Outubro de 2024</td>
-                            <td>
-                                <p class="p-0 m-0 bg-danger">Aguardando</p>
-                            </td>
-                            <td>
-                                <a href="#">Ver detalhes</a>
-                            </td>
-                          </tr>
-                          <tr>
-                            <th scope="row" class="px-3">9</th>
-                            <td>Cape Town Eagle</td>
-                            <td>S-2291</td>
-                            <td>Santos</td>
-                            <td>T+P+B</td>
-                            <td>10 de Outubro de 2024</td>
-                            <td>
-                                <p class="p-0 m-0 bg-danger">Aguardando</p>
-                            </td>
-                            <td>
-                                <a href="#">Ver detalhes</a>
-                            </td>
-                          </tr>
-                          <tr>
-                            <th scope="row" class="px-3">10</th>
-                            <td>Cape Town Eagle</td>
-                            <td>S-2291</td>
-                            <td>Santos</td>
-                            <td>T+P+B</td>
-                            <td>10 de Outubro de 2024</td>
-                            <td>
-                                <p class="p-0 m-0 bg-success">Aguardando</p>
-                            </td>
-                            <td>
-                                <a href="#">Ver detalhes</a>
-                            </td>
-                          </tr>
+                          <?php endforeach; ?>
                         </tbody>
+                        <?php endif; ?>
                       </table>
+                      <?php if(!isset($last_supplies) && empty($last_supplies)): ?>
+                      <p>Não existem navios fornecidos no momento...</p>
+                      <?php endif; ?>
                 </div>
                 <div class="home-last-cards container p-0">
                     <div class="home-title-content">
