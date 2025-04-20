@@ -72,7 +72,29 @@ class ShipController extends Controller
      */
     public function store()
     {
-        var_dump($_POST);
+        $shipName = $_POST['ship-name'];
+        $shipAcronym =  $_POST['ship-acronym'];
+        $shipHarbor = $_POST['ship-harbor'];
+        $shipType = $_POST['ship-type'];
+        $supplyDate = $_POST['supply-date'];
+        $shipResponsible = $_POST['ship-responsible'];
+        $shipSecondResponsible = $_POST['ship-second-responsible'];
+        $shipRegime = $_POST['ship-regime'];
+        $shipStatus = $_POST['ship-status'];
+
+        $ship = $this->model('ShipModel');
+
+        $newShip = $ship->bootstrap($shipName, $shipAcronym, $shipHarbor, 
+        $shipType, $supplyDate, $shipResponsible, $shipSecondResponsible,
+        $shipRegime, $shipStatus);
+
+        if($newShip->save())
+        {
+            $script = "<script>
+            window.location = '".APP_URL."/navios-fornecidos';</script>";
+            echo $script;
+            die();
+        }
     }
 
     /**

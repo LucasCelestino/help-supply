@@ -27,9 +27,7 @@ class ShipModel extends Model
      *
      * @return ShipModel
      */
-    public function bootstrap(String $name, String $acronym, String $harbor, 
-    Integer $type, String $supply_date, Integer $responsible, Integer $second_responsible,
-    Integer $regime, Integer $status): ShipModel
+    public function bootstrap($name,$acronym,$harbor,$type,$supply_date,$responsible,$second_responsible,$regime,$status): ShipModel
     {
         $this->name = $name;
         $this->acronym = $acronym;
@@ -125,13 +123,13 @@ class ShipModel extends Model
     /**
      * @return ShipModel|null
      */
-    public function save(): ?ShipModel
+    public function save()
     {
 
-        if(!$this->required())
-        {
-            return null;
-        }
+        // if(!$this->required())
+        // {
+        //     return null;
+        // }
 
         // UPDATE SHIP
         if(!empty($this->id))
@@ -152,8 +150,7 @@ class ShipModel extends Model
             (:name, :acronym, :harbor, :type, :supply_date, :responsible, :second_responsible, :regime, :status)", $this->safe());
         }
 
-        $this->data = $this->read("SELECT * FROM ".self::$entity." WHERE id = :id", "id={$shipId}")->fetchObject(__CLASS__);
-        return $this;
+        return $shipId;
     }
 
     /**
