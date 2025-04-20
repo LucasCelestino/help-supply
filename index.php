@@ -16,9 +16,14 @@ $router->namespace("App\Controllers\Web");
 
 $router->get("/home", "HomeController:index");
 $router->get("/", "HomeController:index");
+
+
 $router->get("/login", "LoginController:index");
 $router->post("/login", "LoginController:login");
 $router->get("/loggout", "LoginController:loggout");
+
+
+$router->get("/navios-fornecidos", "ShipController:index");
 
 
 

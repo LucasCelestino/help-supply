@@ -2,41 +2,27 @@
 
 namespace App\Controllers\Web;
 
-class HomeController extends Controller
+class ShipController extends Controller
 {
-
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function __construct()
     {
         if(!isset($_SESSION['user_auth']) || empty($_SESSION['user_auth']))
         {
             header("Location: login");
             die();
         }
+    }
 
-        $folder = $this->model('FolderModel');
-
-        $racineFolders = $folder->findByStatus(3) != null ? count($folder->findByStatus(3)) : 0;
-        $sendFolders = $folder->findByStatus(6) != null ? count($folder->findByStatus(6)) : 0;
-        $foldersWithPendings = $folder->findByStatus(5) != null ? count($folder->findByStatus(5)) : 0;
-
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
         $ship = $this->model('ShipModel');
 
-        $lastSupplies = $ship->all(10,0);
+        $lastSupplies = $ship->all(15,0);
 
-        $reminders = $this->model('RemindersModel');
-
-        $lastReminders = $reminders->all(1, 3);
-
-        $this->render('home', 'home.index', [
-        'folders_with_racine'=>$racineFolders,
-        'folders_send'=>$sendFolders,
-        'folders_with_pendings'=>$foldersWithPendings,
-        'last_supplies'=>$lastSupplies,
-        'last_reminders'=>$lastReminders
-        ]);
+        $this->render('ship-supply', 'ship-supply.index', ['last_supplies'=>$lastSupplies]);
     }
 
     /**
