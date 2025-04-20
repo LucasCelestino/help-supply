@@ -166,7 +166,7 @@
                                 <?php endif; ?>
                             </td>
                             <td class="infos">
-                                <a href="navio-fornecido?id=<?=$lastSupply->id;?>">Ver detalhes</a>
+                                <a href="navio-fornecido/<?=$lastSupply->id;?>">Ver detalhes</a>
                             </td>
                           </tr>
                           <?php endforeach; ?>

@@ -24,6 +24,7 @@ $router->get("/loggout", "LoginController:loggout");
 
 
 $router->get("/navios-fornecidos", "ShipController:index");
+$router->get("/navio-fornecido/{id}", "ShipController:show");
 
 
 

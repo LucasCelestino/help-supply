@@ -32,11 +32,13 @@ class ShipController extends Controller
      */
     public function show(array $data)
     {
-        // $user = $this->model('UserModel');
+        $ship = $this->model('ShipModel');
 
-        // $id = $data['id'];
+        $id = $data['id'];
 
-        // $userLoad = $user->load($id);
+        $shipLoaded = $ship->load($id);
+
+        $this->render('ship-supply', 'ship-supply.show', ['ship'=>$shipLoaded]);
     }
 
     /**
