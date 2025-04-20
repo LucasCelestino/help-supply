@@ -29,6 +29,15 @@
                                 <span class="d-none d-sm-inline mx-3" style="font-size: 13px;">Lucas Celestino</span>
                             </div>
                         </a>
+                        <!-- <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+                            <li><a class="dropdown-item" href="#">New project...</a></li>
+                            <li><a class="dropdown-item" href="#">Settings</a></li>
+                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Sair</a></li>
+                        </ul> -->
                     </div>
                     <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                         <div class="border-menu">
@@ -69,8 +78,8 @@
                         <div class="border-menu">
                         <li class="d-flex align-items-center item-menu">
                             <img src="<?=APP_URL?>/public/assets/images/utilities-1.png" alt="Utilidades" width="24" height="24">
-                            <a href="#submenu1" aria-disabled="true" data-bs-toggle="collapse" class="nav-link align-middle text-light disabled">
-                            <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline text-secondary">UTILIDADES</span> </a>
+                            <a href="#submenu1" data-bs-toggle="collapse" class="nav-link align-middle text-light">
+                            <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">UTILIDADES</span> </a>
                         </li>
                         </div>
                         <div class="border-menu">
@@ -92,45 +101,92 @@
                   <div class="form-add-fornecimento-wrapper px-4 py-3">
                     <div class="head d-flex align-items-center py-2 mb-2">
                         <img src="<?=APP_URL?>/public/assets/images/seta-direita-2.png" style="margin-right: 10px;">
-                        <a href="<?=APP_URL;?>/navios-fornecidos" class="text-decoration-none text-white fw-bold" style="margin-right: 10px;">Voltar</a>
-                        <p class="p-0 m-0" style="margin-right: 10px;"><?=$ship->name?>  <?=$ship->acronym?></p>
+                        <a href="<?=APP_URL?>/navios-fornecidos" class="text-decoration-none text-white fw-bold" style="margin-right: 10px;">Voltar</a>
+                        <p class="p-0 m-0" style="margin-right: 10px;">Editar Fornecimento</p>
                     </div>
-                    <div class="info-wrapper d-flex align-items-center py-2 mb-4">
-                        <p class="px-2 my-0 fw-bold">Nome do navio:</p>
-                        <p class="my-0"><?=$ship->name;?></p>
-                    </div>
-                    <div class="info-wrapper d-flex align-items-center py-2 mb-4">
-                        <p class="px-2 my-0 fw-bold">Sigla:</p>
-                        <p class="my-0"><?=$ship->acronym;?></p>
-                    </div>
-                    <div class="info-wrapper d-flex align-items-center py-2 mb-4">
-                        <p class="px-2 my-0 fw-bold">Porto:</p>
-                        <p class="my-0"><?=$ship->harbor;?></p>
-                    </div>
-                    <div class="info-wrapper d-flex align-items-center py-2 mb-4">
-                        <p class="px-2 my-0 fw-bold">Tipo de fornecimento:</p>
-                        <p class="my-0"><?=$ship->type;?></p>
-                    </div>
-                    <div class="info-wrapper d-flex align-items-center py-2 mb-4">
-                        <p class="px-2 my-0 fw-bold">Data de fornecimento:</p>
-                        <p class="my-0"><?=$ship->supply_date;?></p>
-                    </div>
-                    <div class="info-wrapper d-flex align-items-center py-2 mb-4">
-                        <p class="px-2 my-0 fw-bold">Responsável pelo navio:</p>
-                        <p class="my-0"><?=$ship->responsible;?> / <?=$ship->second_responsible;?></p>
-                    </div>
-                    <div class="info-wrapper d-flex align-items-center py-2 mb-4">
-                        <p class="px-2 my-0 fw-bold">Regime:</p>
-                        <p class="my-0"><?=$ship->regime;?></p>
-                    </div>
-                    <div class="info-wrapper d-flex align-items-center py-2 mb-4">
-                        <p class="px-2 my-0 fw-bold">Status:</p>
-                        <?php if($ship->status == 0): ?>
-                            <p class="p-1 m-0 bg-success rounded">Recebido</p>
-                        <?php else: ?>
-                            <p class="p-1 m-0 bg-danger rounded">Aguardando</p>
-                        <?php endif; ?>
-                    </div>
+                    <form action="#" method="post">
+                        <div class="form-group d-flex flex-column mb-4">
+                            <label for="ship-name" class="mb-2">Nome do navio:</label>
+                            <input type="text" name="ship-name" id="ship-name" class="text-white px-1 py-1 rounded" value="<?=$ship->name;?>">
+                        </div>
+                        <div class="form-group d-flex flex-column mb-4">
+                            <label for="acronym" class="mb-2">Sigla:</label>
+                            <input type="text" name="acronym" id="acronym" class="text-white px-1 py-1 rounded" value="<?=$ship->acronym;?>">
+                        </div>
+                        <div class="form-group d-flex flex-column mb-4">
+                            <label for="acronym" class="mb-2">Porto:</label>
+                            <select name="" id="" class="form-select rounded text-white">
+                                <option selected>Selecione o porto de fornecimento</option>
+                                <option value="1">Santos</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                        </div>
+                        <div class="form-group d-flex flex-column mb-4">
+                            <label for="acronym" class="mb-2">Tipo de fornecimento:</label>
+                            <select name="" id="" class="form-select rounded text-white">
+                                <option selected>Selecione o tipo do fornecimento</option>
+                                <option value="1">P</option>
+                                <option value="2">B</option>
+                                <option value="3">T</option>
+                                <option value="3">T/P</option>
+                                <option value="3">T/B</option>
+                                <option value="3">T/P/B</option>
+                                <option value="3">P/B</option>
+                            </select>
+                        </div>
+                        <div class="form-group d-flex flex-column mb-4">
+                            <label for="acronym" class="mb-2">Data do fornecimento:</label>
+                            <input type="date" name="acronym" id="acronym" class="text-white px-1 py-1 rounded" value="<?=$ship->supply_date;?>">
+                        </div>
+                        <div class="form-group d-flex flex-column mb-4">
+                            <label for="acronym" class="mb-2">Responsável pelo navio:</label>
+                            <select name="" id="" class="form-select rounded text-white">
+                                <option selected>Selecione o responsável pelo navio</option>
+                                <option value="1">Antonio</option>
+                                <option value="2">Alan</option>
+                                <option value="3">Glerson</option>
+                                <option value="3">Giulia</option>
+                                <option value="3">Johnny</option>
+                                <option value="3">João Pedro</option>
+                                <option value="3">João Relva</option>
+                                <option value="3">Lucas Prado</option>
+                                <option value="3">Pedro</option>
+                            </select>
+                        </div>
+                        <div class="form-group d-flex flex-column mb-4">
+                            <label for="acronym" class="mb-2">Segundo responsável pelo navio:</label>
+                            <select name="" id="" class="form-select rounded text-white">
+                                <option selected>Selecione o segundo responsável pelo navio</option>
+                                <option value="1">Antonio</option>
+                                <option value="2">Alan</option>
+                                <option value="3">Glerson</option>
+                                <option value="3">Giulia</option>
+                                <option value="3">Johnny</option>
+                                <option value="3">João Pedro</option>
+                                <option value="3">João Relva</option>
+                                <option value="3">Lucas Prado</option>
+                                <option value="3">Pedro</option>
+                            </select>
+                        </div>
+                        <div class="form-group d-flex flex-column mb-4">
+                            <label for="acronym" class="mb-2">Tipo de regime:</label>
+                            <select name="" id="" class="form-select rounded text-white">
+                                <option selected>Selecione o regime do navio</option>
+                                <option value="1">Longo Curso</option>
+                                <option value="2">Cabotagem</option>
+                            </select>
+                        </div>
+                        <div class="form-group d-flex flex-column mb-4">
+                            <label for="acronym" class="mb-2">Status:</label>
+                            <select name="" id="" class="form-select rounded text-white">
+                                <option selected>Selecione o status do fornecimento</option>
+                                <option value="1">Aguardando</option>
+                                <option value="2">Recebido</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-success" style="width: 150px;">Editar</button>
+                    </form>
                   </div>
                 </div>
             </div>

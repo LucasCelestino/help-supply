@@ -46,7 +46,7 @@ class ShipController extends Controller
      */
     public function create()
     {
-        $this->render('users', 'users.create', ['name'=>'Dev']);
+        $this->render('ship-supply', 'ship-supply-create', []);
     }
 
     /**
@@ -64,7 +64,13 @@ class ShipController extends Controller
      */
     public function edit(array $data)
     {
-        $this->render('users', 'users.edit', ['name'=>'Dev']);
+        $ship = $this->model('ShipModel');
+
+        $id = $data['id'];
+
+        $shipLoaded = $ship->load($id);
+
+        $this->render('ship-supply', 'ship-supply.edit', ['ship'=>$shipLoaded]);
     }
 
     /**
@@ -82,6 +88,17 @@ class ShipController extends Controller
      */
     public function destroy(array $data)
     {
-        // destroy
+        $ship = $this->model('ShipModel');
+
+        $id = $data['id'];
+
+        $shipLoaded = $ship->load($id);
+
+        $shipLoaded->destroy();
+
+        $script = "<script>
+        window.location = '".APP_URL."/navios-fornecidos';</script>";
+        echo $script;
+        die();
     }
 }

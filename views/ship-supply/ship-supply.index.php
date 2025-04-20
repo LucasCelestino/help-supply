@@ -100,7 +100,7 @@
                 <div class="home-last-suppliers mb-4 container p-0">
                 <table class="table">
                     <div class="title pt-3 pb-3 px-2 d-flex justify-content-between align-items-center">
-                        <a href="adicionar-novo-fornecimento.html" class="btn btn-success">Adicionar Novo</a>
+                        <a href="<?=APP_URL;?>/navios-fornecidos/adicionar" class="btn btn-success">Adicionar Novo</a>
                         <form action="#" method="get" class="form-navios-fornecidos-index">
                             <div class="form-group dfkdfk d-flex">
                                 <input type="search" name="search" id="search" placeholder="Digite o nome do navio ou sigla...">
@@ -157,7 +157,7 @@
                             <td><?=$lastSupply->acronym;?></td>
                             <td><?=$lastSupply->harbor;?></td>
                             <td><?=$lastSupply->ship_type_name;?></td>
-                            <td><?=date('d/m/Y', strtotime($lastSupply->supply_date));?></td>
+                            <td style="width:230px !important;"><?=date('d/m/Y', strtotime($lastSupply->supply_date));?></td>
                             <td class="infos">
                                 <?php if($lastSupply->status == 0): ?>
                                     <p class="p-0 m-0 bg-success">Recebido</p>
@@ -165,8 +165,12 @@
                                     <p class="p-0 m-0 bg-danger">Aguardando</p>
                                 <?php endif; ?>
                             </td>
-                            <td class="infos">
-                                <a href="navio-fornecido/<?=$lastSupply->id;?>">Ver detalhes</a>
+                            <td class="infos p-0">
+                                <div class="d-flex py-1">
+                                    <a href="navios-fornecidos/exibir/<?=$lastSupply->id;?>" class="btn btn-success" style="width: 80px; margin-right:10px !important;">Exibir</a>
+                                    <a href="navios-fornecidos/editar/<?=$lastSupply->id;?>" class="btn btn-warning" style="width: 80px; margin-right:10px !important;">Editar</a>
+                                    <a href="navios-fornecidos/excluir/<?=$lastSupply->id;?>" class="btn btn-danger" style="width: 80px; margin-right:10px !important;">Excluir</a>
+                                </div>
                             </td>
                           </tr>
                           <?php endforeach; ?>

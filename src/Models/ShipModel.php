@@ -49,7 +49,7 @@ class ShipModel extends Model
      *
      * @return ShipModel|null
      */
-    public function load(int $id, string $columns = '*'): ?ShipModel
+    public function load($id, string $columns = '*'): ?ShipModel
     {
         $load = $this->read("SELECT {$columns} FROM ".self::$entity." WHERE id = :id", "id={$id}");
 
