@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-class UserModel extends Model
+class ShipTypeModel extends Model
 {
     /**
      * @var array
@@ -12,22 +12,16 @@ class UserModel extends Model
     /**
      * @var string
      */
-    private static string $entity = 'users';
+    private static string $entity = 'ship_type';
 
     /**
      * @param String $name
-     * @param String $login
-     * @param String $password
-     * @param String $profile_picture
      *
-     * @return UserModel
+     * @return ShipTypeModel
      */
-    public function bootstrap(String $name, String $login, String $password, String $profile_picture): UserModel
+    public function bootstrap(String $name): ShipTypeModel
     {
         $this->name = $name;
-        $this->login = $login;
-        $this->password = $password;
-        $this->profile_picture = $profile_picture;
         return $this;
     }
 
@@ -35,9 +29,9 @@ class UserModel extends Model
      * @param int $id
      * @param string $columns
      *
-     * @return UserModel|null
+     * @return ShipTypeModel|null
      */
-    public function load(int $id, string $columns = '*'): ?UserModel
+    public function load(int $id, string $columns = '*'): ?ShipTypeModel
     {
         $load = $this->read("SELECT {$columns} FROM ".self::$entity." WHERE id = :id", "id={$id}");
 
@@ -53,11 +47,11 @@ class UserModel extends Model
      * @param string $name
      * @param string $columns
      *
-     * @return UserModel|null
+     * @return ShipTypeModel|null
      */
-    public function find(string $login, string $columns = '*'): ?UserModel
+    public function find(string $name, string $columns = '*'): ?ShipTypeModel
     {
-        $find = $this->read("SELECT {$columns} FROM ".self::$entity." WHERE login = :login", "login={$login}");
+        $find = $this->read("SELECT {$columns} FROM ".self::$entity." WHERE name = :name", "name={$name}");
 
         if($this->fail() || !$find->rowCount())
         {
@@ -72,9 +66,9 @@ class UserModel extends Model
      * @param int $offset
      * @param string $columns
      *
-     * @return UserModel|null
+     * @return ShipTypeModel|null
      */
-    public function all(int $limit = 30, int $offset = 0, string $columns = '*'): ?UserModel
+    public function all(int $limit = 30, int $offset = 0, string $columns = '*'): ?ShipTypeModel
     {
         $all = $this->read("SELECT {$columns} FROM ".self::$entity." LIMIT :limit OFFSET :offset", "limit={$limit}&offset={$offset}");
 
@@ -87,9 +81,9 @@ class UserModel extends Model
     }
 
     /**
-     * @return UserModel|null
+     * @return ShipTypeModel|null
      */
-    public function save(): ?UserModel
+    public function save(): ?ShipTypeModel
     {
 
         if(!$this->required())
@@ -97,25 +91,30 @@ class UserModel extends Model
             return null;
         }
 
-        // UPDATE USER
+        // UPDATE SHIP TYPE
         if(!empty($this->id))
         {
-            $userId = $this->id;
+            $shipTypeId = $this->id;
 
-            $this->update(self::$entity, $this->safe(), "id=:id", "id={$userId}");
+            if($email->rowCount())
+            {
+                return null;
+            }
+
+            $this->update(self::$entity, $this->safe(), "id=:id", "id={$shipTypeId}");
 
             if($this->fail())
             {
                 return null;
             }
         }
-        // CREATE USER
+        // CREATE SHIP TYPE
         else
         {
-            $userId = $this->create("INSERT INTO ".self::$entity." (name,login,password,profile_picture) VALUES (:name,:login,:password,:profile_picture)", $this->safe());
+            $shipTypeId = $this->create("INSERT INTO ".self::$entity." (name) VALUES (:name)", $this->safe());
         }
 
-        $this->data = $this->read("SELECT * FROM ".self::$entity." WHERE id = :id", "id={$userId}")->fetchObject(__CLASS__);
+        $this->data = $this->read("SELECT * FROM ".self::$entity." WHERE id = :id", "id={$shipTypeId}")->fetchObject(__CLASS__);
         return $this;
 
     }
@@ -140,7 +139,7 @@ class UserModel extends Model
      */
     public function required(): bool
     {
-        if(!$this->name || !$this->login || !$this->password)
+        if(!$this->name)
         {
             return false;
         }

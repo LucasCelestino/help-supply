@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-class UserModel extends Model
+class RemindersModel extends Model
 {
     /**
      * @var array
@@ -12,22 +12,18 @@ class UserModel extends Model
     /**
      * @var string
      */
-    private static string $entity = 'users';
+    private static string $entity = 'reminders';
 
     /**
-     * @param String $name
-     * @param String $login
-     * @param String $password
-     * @param String $profile_picture
+     * @param String $reminder
+     * @param Integer $user_id
      *
-     * @return UserModel
+     * @return RemindersModel
      */
-    public function bootstrap(String $name, String $login, String $password, String $profile_picture): UserModel
+    public function bootstrap(String $reminder, Integer $user_id): RemindersModel
     {
-        $this->name = $name;
-        $this->login = $login;
-        $this->password = $password;
-        $this->profile_picture = $profile_picture;
+        $this->reminder = $reminder;
+        $this->user_id = $user_id;
         return $this;
     }
 
@@ -35,11 +31,11 @@ class UserModel extends Model
      * @param int $id
      * @param string $columns
      *
-     * @return UserModel|null
+     * @return RemindersModel|null
      */
-    public function load(int $id, string $columns = '*'): ?UserModel
+    public function load(int $id, int $userId, string $columns = '*'): ?RemindersModel
     {
-        $load = $this->read("SELECT {$columns} FROM ".self::$entity." WHERE id = :id", "id={$id}");
+        $load = $this->read("SELECT {$columns} FROM ".self::$entity." WHERE id = :id AND user_id = :user_id", "id={$id}&user_id={$userId}");
 
         if($this->fail() || !$load->rowCount())
         {
@@ -50,14 +46,14 @@ class UserModel extends Model
     }
 
     /**
-     * @param string $name
+     * @param string $reminder
      * @param string $columns
      *
-     * @return UserModel|null
+     * @return RemindersModel|null
      */
-    public function find(string $login, string $columns = '*'): ?UserModel
+    public function find(string $reminder, string $columns = '*'): ?RemindersModel
     {
-        $find = $this->read("SELECT {$columns} FROM ".self::$entity." WHERE login = :login", "login={$login}");
+        $find = $this->read("SELECT {$columns} FROM ".self::$entity." WHERE reminder LIKE ':reminder%' AND user_id = :user_id", "reminder={$reminder}&user_id={$userId}");
 
         if($this->fail() || !$find->rowCount())
         {
@@ -72,9 +68,9 @@ class UserModel extends Model
      * @param int $offset
      * @param string $columns
      *
-     * @return UserModel|null
+     * @return RemindersModel|null
      */
-    public function all(int $limit = 30, int $offset = 0, string $columns = '*'): ?UserModel
+    public function all(int $limit = 30, int $offset = 0, string $columns = '*'): ?RemindersModel
     {
         $all = $this->read("SELECT {$columns} FROM ".self::$entity." LIMIT :limit OFFSET :offset", "limit={$limit}&offset={$offset}");
 
@@ -87,9 +83,9 @@ class UserModel extends Model
     }
 
     /**
-     * @return UserModel|null
+     * @return RemindersModel|null
      */
-    public function save(): ?UserModel
+    public function save(): ?RemindersModel
     {
 
         if(!$this->required())
@@ -97,25 +93,25 @@ class UserModel extends Model
             return null;
         }
 
-        // UPDATE USER
+        // UPDATE REMINDER
         if(!empty($this->id))
         {
-            $userId = $this->id;
+            $reminderId = $this->id;
 
-            $this->update(self::$entity, $this->safe(), "id=:id", "id={$userId}");
+            $this->update(self::$entity, $this->safe(), "id=:id", "id={$reminderId}");
 
             if($this->fail())
             {
                 return null;
             }
         }
-        // CREATE USER
+        // CREATE REMINDER
         else
         {
-            $userId = $this->create("INSERT INTO ".self::$entity." (name,login,password,profile_picture) VALUES (:name,:login,:password,:profile_picture)", $this->safe());
+            $reminderId = $this->create("INSERT INTO ".self::$entity." (reminder) VALUES (:reminder)", $this->safe());
         }
 
-        $this->data = $this->read("SELECT * FROM ".self::$entity." WHERE id = :id", "id={$userId}")->fetchObject(__CLASS__);
+        $this->data = $this->read("SELECT * FROM ".self::$entity." WHERE id = :id", "id={$reminderId}")->fetchObject(__CLASS__);
         return $this;
 
     }
@@ -140,7 +136,7 @@ class UserModel extends Model
      */
     public function required(): bool
     {
-        if(!$this->name || !$this->login || !$this->password)
+        if(!$this->name || !$this->user_id)
         {
             return false;
         }
