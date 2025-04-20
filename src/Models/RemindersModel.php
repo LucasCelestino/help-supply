@@ -70,9 +70,9 @@ class RemindersModel extends Model
      *
      * @return RemindersModel|null
      */
-    public function all(int $limit = 30, int $offset = 0, string $columns = '*'): ?RemindersModel
+    public function all(int $userId, int $limit = 30, int $offset = 0, string $columns = '*')
     {
-        $all = $this->read("SELECT {$columns} FROM ".self::$entity." LIMIT :limit OFFSET :offset", "limit={$limit}&offset={$offset}");
+        $all = $this->read("SELECT {$columns} FROM ".self::$entity." WHERE user_id = :user_id LIMIT :limit", "user_id={$userId}&limit={$limit}");
 
         if($this->fail() || !$all->rowCount())
         {

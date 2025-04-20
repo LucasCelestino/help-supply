@@ -29,11 +29,16 @@ class HomeController extends Controller
 
         $lastSupplies = $ship->all(10,0,'id,name,acronym,harbor,type,supply_date,status');
 
+        $reminders = $this->model('RemindersModel');
+
+        $lastReminders = $reminders->all(1);
+
         $this->render('home', 'home.index', [
         'folders_with_racine'=>$racineFolders,
         'folders_send'=>$sendFolders,
         'folders_with_pendings'=>$foldersWithPendings,
-        'last_supplies'=>$lastSupplies
+        'last_supplies'=>$lastSupplies,
+        'last_reminders'=>$lastReminders
         ]);
     }
 

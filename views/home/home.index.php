@@ -166,41 +166,27 @@
                       <p>Não existem navios fornecidos no momento...</p>
                       <?php endif; ?>
                 </div>
-                <div class="home-last-cards container p-0">
+                <div class="home-last-cards container p-0 mt-5">
                     <div class="home-title-content">
                         <h2 class="mb-4">Últimos Lembretes Cadastrados</h2>
                     </div>
-                    <div class="cards-wrapper d-flex justify-content-between">
-                        <div class="card py-3 text-white" style="width: 18rem;">
+                    <div class="cards-wrapper d-flex justify-content-start">
+                    <?php if(isset($last_reminders) && !empty($last_reminders)): ?>
+                        <?php foreach($last_reminders as $lastReminder): ?>
+                        <div class="card py-3 text-white" style="width: 18rem; margin-right:30px;">
                             <div class="card-body">
-                              <h5 class="card-title">Credit notes sempre separados nos scans</h5>
-                              <p class="card-text">Criado em: 06/04/2025</p>
+                              <h5 class="card-title"><?=$lastReminder->reminder;?></h5>
+                              <p class="card-text">Criado em: <?=$lastReminder->created_at;?></p>
                               <div class="d-flex">
                                 <a href="#" class="btn btn-danger btn-lasts-cards">Editar</a>
                                 <a href="#" class="btn btn-warning btn-lasts-cards">Excluir</a>
                               </div>
                             </div>
                         </div>
-                        <div class="card py-3 text-white" style="width: 18rem;">
-                            <div class="card-body">
-                              <h5 class="card-title">Credit notes sempre separados nos scans</h5>
-                              <p class="card-text">Criado em: 06/04/2025</p>
-                              <div class="d-flex">
-                                <a href="#" class="btn btn-danger btn-lasts-cards">Editar</a>
-                                <a href="#" class="btn btn-warning btn-lasts-cards">Excluir</a>
-                              </div>
-                            </div>
-                        </div>
-                        <div class="card py-3 text-white" style="width: 18rem;">
-                            <div class="card-body">
-                              <h5 class="card-title">Credit notes sempre separados nos scans</h5>
-                              <p class="card-text">Criado em: 06/04/2025</p>
-                              <div class="d-flex">
-                                <a href="#" class="btn btn-danger btn-lasts-cards">Editar</a>
-                                <a href="#" class="btn btn-warning btn-lasts-cards">Excluir</a>
-                              </div>
-                            </div>
-                        </div>
+                        <?php endforeach; ?>
+                    <?php else: ?>    
+                        <p style="font-size:15px;">Não existem lembretes cadastrados no momento...</p>
+                    <?php endif; ?>
                     </div>
                 </div>
             </div>
