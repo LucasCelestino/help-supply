@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-class ShipResponsibleModel extends Model
+class ShipSecondResponsibleModel extends Model
 {
     /**
      * @var array
@@ -12,14 +12,14 @@ class ShipResponsibleModel extends Model
     /**
      * @var string
      */
-    private static string $entity = 'ship_responsibles';
+    private static string $entity = 'ship_second_responsibles';
 
     /**
      * @param String $name
      *
-     * @return ShipResponsibleModel
+     * @return ShipSecondResponsibleModel
      */
-    public function bootstrap(String $name): ShipResponsibleModel
+    public function bootstrap(String $name): ShipSecondResponsibleModel
     {
         $this->name = $name;
         return $this;
@@ -29,9 +29,9 @@ class ShipResponsibleModel extends Model
      * @param int $id
      * @param string $columns
      *
-     * @return ShipResponsibleModel|null
+     * @return ShipSecondResponsibleModel|null
      */
-    public function load(int $id, string $columns = '*'): ?ShipResponsibleModel
+    public function load(int $id, string $columns = '*'): ?ShipSecondResponsibleModel
     {
         $load = $this->read("SELECT {$columns} FROM ".self::$entity." WHERE id = :id", "id={$id}");
 
@@ -47,9 +47,9 @@ class ShipResponsibleModel extends Model
      * @param string $name
      * @param string $columns
      *
-     * @return ShipResponsibleModel|null
+     * @return ShipSecondResponsibleModel|null
      */
-    public function find(string $name, string $columns = '*'): ?ShipResponsibleModel
+    public function find(string $name, string $columns = '*'): ?ShipResShipSecondResponsibleModelponsibleModel
     {
         $find = $this->read("SELECT {$columns} FROM ".self::$entity." WHERE name = :name", "name={$name}");
 
@@ -66,7 +66,7 @@ class ShipResponsibleModel extends Model
      * @param int $offset
      * @param string $columns
      *
-     * @return ShipResponsibleModel|null
+     * @return ShipSecondResponsibleModel|null
      */
     public function all(int $limit = 30, int $offset = 0, string $columns = '*')
     {
@@ -81,9 +81,9 @@ class ShipResponsibleModel extends Model
     }
 
     /**
-     * @return ShipResponsibleModel|null
+     * @return ShipSecondResponsibleModel|null
      */
-    public function save(): ?ShipResponsibleModel
+    public function save(): ?ShipSecondResponsibleModel
     {
 
         if(!$this->required())

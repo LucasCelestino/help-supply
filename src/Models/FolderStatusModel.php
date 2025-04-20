@@ -68,7 +68,7 @@ class FolderStatusModel extends Model
      *
      * @return FolderStatusModel|null
      */
-    public function all(int $limit = 30, int $offset = 0, string $columns = '*'): ?FolderStatusModel
+    public function all(int $limit = 30, int $offset = 0, string $columns = '*')
     {
         $all = $this->read("SELECT {$columns} FROM ".self::$entity." LIMIT :limit OFFSET :offset", "limit={$limit}&offset={$offset}");
 

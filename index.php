@@ -28,6 +28,7 @@ $router->get("/navios-fornecidos/exibir/{id}", "ShipController:show");
 $router->delete("/navios-fornecidos/excluir/{id}", "ShipController:destroy");
 $router->get("/navios-fornecidos/editar/{id}", "ShipController:edit");
 $router->get("/navios-fornecidos/adicionar", "ShipController:create");
+$router->post("/navios-fornecidos/adicionar", "ShipController:store");
 
 
 // $router->get("/users/{id}", "UserController:show");

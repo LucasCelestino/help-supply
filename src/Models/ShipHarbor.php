@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-class ShipResponsibleModel extends Model
+class ShipHarbor extends Model
 {
     /**
      * @var array
@@ -12,14 +12,14 @@ class ShipResponsibleModel extends Model
     /**
      * @var string
      */
-    private static string $entity = 'ship_responsibles';
+    private static string $entity = 'harbors';
 
     /**
      * @param String $name
      *
-     * @return ShipResponsibleModel
+     * @return ShipHarbor
      */
-    public function bootstrap(String $name): ShipResponsibleModel
+    public function bootstrap(String $name): ShipHarbor
     {
         $this->name = $name;
         return $this;
@@ -29,9 +29,9 @@ class ShipResponsibleModel extends Model
      * @param int $id
      * @param string $columns
      *
-     * @return ShipResponsibleModel|null
+     * @return ShipHarbor|null
      */
-    public function load(int $id, string $columns = '*'): ?ShipResponsibleModel
+    public function load(int $id, string $columns = '*'): ?ShipHarbor
     {
         $load = $this->read("SELECT {$columns} FROM ".self::$entity." WHERE id = :id", "id={$id}");
 
@@ -47,9 +47,9 @@ class ShipResponsibleModel extends Model
      * @param string $name
      * @param string $columns
      *
-     * @return ShipResponsibleModel|null
+     * @return ShipHarbor|null
      */
-    public function find(string $name, string $columns = '*'): ?ShipResponsibleModel
+    public function find(string $name, string $columns = '*'): ?ShipHarbor
     {
         $find = $this->read("SELECT {$columns} FROM ".self::$entity." WHERE name = :name", "name={$name}");
 
@@ -66,7 +66,7 @@ class ShipResponsibleModel extends Model
      * @param int $offset
      * @param string $columns
      *
-     * @return ShipResponsibleModel|null
+     * @return ShipHarbor|null
      */
     public function all(int $limit = 30, int $offset = 0, string $columns = '*')
     {
@@ -81,9 +81,9 @@ class ShipResponsibleModel extends Model
     }
 
     /**
-     * @return ShipResponsibleModel|null
+     * @return ShipHarbor|null
      */
-    public function save(): ?ShipResponsibleModel
+    public function save(): ?ShipHarbor
     {
 
         if(!$this->required())
@@ -91,30 +91,30 @@ class ShipResponsibleModel extends Model
             return null;
         }
 
-        // UPDATE SHIP RESPONSIBLE
+        // UPDATE SHIP TYPE
         if(!empty($this->id))
         {
-            $shipResponsibleId = $this->id;
+            $shipTypeId = $this->id;
 
             if($email->rowCount())
             {
                 return null;
             }
 
-            $this->update(self::$entity, $this->safe(), "id=:id", "id={$shipResponsibleId}");
+            $this->update(self::$entity, $this->safe(), "id=:id", "id={$shipTypeId}");
 
             if($this->fail())
             {
                 return null;
             }
         }
-        // CREATE SHIP RESPONSIBLE
+        // CREATE SHIP TYPE
         else
         {
-            $shipResponsibleId = $this->create("INSERT INTO ".self::$entity." (name) VALUES (:name)", $this->safe());
+            $shipTypeId = $this->create("INSERT INTO ".self::$entity." (name) VALUES (:name)", $this->safe());
         }
 
-        $this->data = $this->read("SELECT * FROM ".self::$entity." WHERE id = :id", "id={$shipResponsibleId}")->fetchObject(__CLASS__);
+        $this->data = $this->read("SELECT * FROM ".self::$entity." WHERE id = :id", "id={$shipTypeId}")->fetchObject(__CLASS__);
         return $this;
 
     }

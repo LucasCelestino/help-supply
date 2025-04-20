@@ -46,7 +46,25 @@ class ShipController extends Controller
      */
     public function create()
     {
-        $this->render('ship-supply', 'ship-supply-create', []);
+        $type = $this->model('ShipTypeModel');
+        $harbor = $this->model('ShipHarbor');
+        $responsible = $this->model('ShipResponsibleModel');
+        $secondResponsible = $this->model('ShipSecondResponsibleModel');
+        $regime = $this->model('ShipRegimeModel');
+
+        $shipType = $type->all(100);
+        $shipHarbors = $harbor->all(100);
+        $shipResponsible = $responsible->all();
+        $shipSecondResponsible = $secondResponsible->all();
+        $shipRegime = $regime->all();
+
+        $this->render('ship-supply', 'ship-supply-create', [
+        'ship_type'=>$shipType,
+        'ship_harbor'=>$shipHarbors,
+        'ship_responsible'=>$shipResponsible,
+        'ship_second_responsible'=>$shipSecondResponsible,
+        'ship_regime'=>$shipRegime,
+        ]);
     }
 
     /**
@@ -54,7 +72,7 @@ class ShipController extends Controller
      */
     public function store()
     {
-        // store
+        var_dump($_POST);
     }
 
     /**
