@@ -3,6 +3,7 @@
 namespace App\Controllers\Web;
 
 use App\Models\UserModel;
+use App\Models\FolderModel;
 
 class HomeController extends Controller
 {
@@ -18,9 +19,17 @@ class HomeController extends Controller
             die();
         }
 
-        
+        $folder = $this->model('FolderModel');
 
-        $this->render('home', 'home.index', []);
+        $racineFolders = $folder->findByStatus(3) != null ? count($folder->findByStatus(3)) : 0;
+        $sendFolders = $folder->findByStatus(6) != null ? count($folder->findByStatus(6)) : 0;
+        $foldersWithPendings = $folder->findByStatus(5) != null ? count($folder->findByStatus(5)) : 0;
+
+        $this->render('home', 'home.index', [
+        'folders_with_racine'=>$racineFolders,
+        'folders_send'=>$sendFolders,
+        'folders_with_pendings'=>$foldersWithPendings
+        ]);
     }
 
     /**

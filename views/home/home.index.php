@@ -99,19 +99,19 @@
                 <div class="container home-last-infos-content px-0 mb-4 d-flex justify-content-between">
                     <div class="item">
                         <div class="d-flex px-4 h-100 align-items-center">
-                            <p class="title-card-last-infos">5 Pastas Racine</p>
+                            <p class="title-card-last-infos"><?=$this->e($folders_with_racine);?> Pastas Racine</p>
                             <img src="public/assets/images/folders.png" width="85">
                         </div>
                     </div>
                     <div class="item">
                         <div class="d-flex px-4 h-100 align-items-center">
-                            <p class="title-card-last-infos">5 Pastas Katia</p>
+                            <p class="title-card-last-infos"><?=$this->e($folders_with_pendings);?> Pastas Pendências</p>
                             <img src="public/assets/images/folders.png" width="85">
                         </div>
                     </div>
                     <div class="item">
                         <div class="d-flex px-4 h-100 align-items-center">
-                            <p class="title-card-last-infos">5 Pastas Enviadas</p>
+                            <p class="title-card-last-infos"><?=$this->e($folders_send);?> Pastas Enviadas</p>
                             <img src="public/assets/images/folders.png" width="85">
                         </div>
                     </div>

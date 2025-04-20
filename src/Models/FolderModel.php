@@ -82,6 +82,24 @@ class FolderModel extends Model
     }
 
     /**
+     * @param string $name
+     * @param string $columns
+     *
+     * @return FolderModel|null
+     */
+    public function findByStatus(int $status, string $columns = '*')
+    {
+        $find = $this->read("SELECT {$columns} FROM ".self::$entity." WHERE status = :status", "status={$status}");
+
+        if($this->fail() || !$find->rowCount())
+        {
+            return null;
+        }
+
+        return $find->fetchAll(\PDO::FETCH_CLASS, __CLASS__);
+    }
+
+    /**
      * @param string $search
      * @param string $columns
      *
@@ -106,7 +124,7 @@ class FolderModel extends Model
      *
      * @return FolderModel|null
      */
-    public function all(int $limit = 30, int $offset = 0, string $columns = '*'): ?FolderModel
+    public function all(int $limit = 30, int $offset = 0, string $columns = '*'): Array
     {
         $all = $this->read("SELECT {$columns} FROM ".self::$entity." LIMIT :limit OFFSET :offset", "limit={$limit}&offset={$offset}");
 
