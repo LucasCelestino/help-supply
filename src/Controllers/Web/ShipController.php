@@ -23,6 +23,8 @@ class ShipController extends Controller
 
         $itemsPerPage = 15;
 
+        $lastSupplies = $lastSupplies == null ? [] : $lastSupplies;
+
         // Página atual (vinda da URL)
         $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
         $page = max($page, 1); // não deixa a página ser menor que 1
