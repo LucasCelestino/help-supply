@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="public/assets/css/login.css">
+    <link rel="stylesheet" href="<?=APP_URL?>/public/assets/css/login.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
@@ -19,7 +19,7 @@
     <div class="login-wrapper rounded py-3 px-4">
         <h1 class="text-center title text-white text-uppercase fw-bold">HelpSupply</h1>
         <p class="text-center subtitle text-white">Sistema para gerenciamento de fornecimentos</p>
-        <form action="/mvc-structure-main/login" method="POST">
+        <form action="<?=APP_URL?>/login" method="POST">
             <div class="mb-3">
                 <label for="username" class="form-label text-white">Usuário</label>
                 <input type="text" class="form-control py-2" name="username" id="username" aria-describedby="username" placeholder="Digite seu nome de usuário...">
@@ -28,6 +28,12 @@
                 <label for="password" class="form-label text-white">Senha</label>
                 <input type="password" class="form-control py-2" name="password" id="password" placeholder="Digite sua senha...">
             </div>
+            <?php if(isset($_GET['empty_field']) && $_GET['empty_field'] == true): ?>
+              <p class="text-danger p-0 my-3" style="font-size:12px;">Preencha todos os campos antes de prosseguir...</p>
+            <?php endif; ?>
+            <?php if(isset($_GET['incorret_password']) && $_GET['incorret_password'] == true): ?>
+              <p class="text-danger p-0 my-3" style="font-size:12px;">As senhas não conferem, tente novamente...</p>
+            <?php endif; ?>
             <button type="submit" class="btn btn-login w-100 text-white" name="action" style="background-color:rgb(15, 15, 15) !important;">Entrar</button>
         </form>
     </div>

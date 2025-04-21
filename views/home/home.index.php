@@ -7,19 +7,19 @@
                     <div class="item">
                         <div class="d-flex px-4 h-100 align-items-center">
                             <p class="title-card-last-infos"><?=$this->e($folders_with_racine);?> Pastas Racine</p>
-                            <img src="public/assets/images/folders.png" width="85">
+                            <img src="<?=APP_URL?>/public/assets/images/folders.png" width="85">
                         </div>
                     </div>
                     <div class="item">
                         <div class="d-flex px-4 h-100 align-items-center">
                             <p class="title-card-last-infos"><?=$this->e($folders_with_pendings);?> Pastas Pendências</p>
-                            <img src="public/assets/images/folders.png" width="85">
+                            <img src="<?=APP_URL?>/public/assets/images/folders.png" width="85">
                         </div>
                     </div>
                     <div class="item">
                         <div class="d-flex px-4 h-100 align-items-center">
                             <p class="title-card-last-infos"><?=$this->e($folders_send);?> Pastas Enviadas</p>
-                            <img src="public/assets/images/folders.png" width="85">
+                            <img src="<?=APP_URL?>/public/assets/images/folders.png" width="85">
                         </div>
                     </div>
                 </div>

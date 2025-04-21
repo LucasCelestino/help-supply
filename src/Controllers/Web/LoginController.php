@@ -28,6 +28,14 @@ class LoginController extends Controller
             $username = $_POST['username'];
             $password = $_POST['password'];
 
+            if((!isset($username) || empty($username)) || (!isset($password) || empty($password)))
+            {
+                $script = "<script>
+                window.location = '".APP_URL."/login?empty_field=true';</script>";
+                echo $script;
+                die();
+            }
+
             $user = $this->model('UserModel');
 
             $findedUser = $user->find($username);
@@ -44,7 +52,10 @@ class LoginController extends Controller
             }
             else
             {
-                echo 'senhas não conferem';
+                $script = "<script>
+                window.location = '".APP_URL."/login?incorret_password=true';</script>";
+                echo $script;
+                die();
             }
         }
     }
