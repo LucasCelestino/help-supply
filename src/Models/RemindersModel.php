@@ -20,7 +20,7 @@ class RemindersModel extends Model
      *
      * @return RemindersModel
      */
-    public function bootstrap(String $reminder, Integer $user_id): RemindersModel
+    public function bootstrap(String $reminder, $user_id): RemindersModel
     {
         $this->reminder = $reminder;
         $this->user_id = $user_id;
@@ -85,13 +85,13 @@ class RemindersModel extends Model
     /**
      * @return RemindersModel|null
      */
-    public function save(): ?RemindersModel
+    public function save()
     {
 
-        if(!$this->required())
-        {
-            return null;
-        }
+        // if(!$this->required())
+        // {
+        //     return null;
+        // }
 
         // UPDATE REMINDER
         if(!empty($this->id))
@@ -108,11 +108,10 @@ class RemindersModel extends Model
         // CREATE REMINDER
         else
         {
-            $reminderId = $this->create("INSERT INTO ".self::$entity." (reminder) VALUES (:reminder)", $this->safe());
+            $reminderId = $this->create("INSERT INTO ".self::$entity." (reminder,user_id) VALUES (:reminder,:user_id)", $this->safe());
         }
-
-        $this->data = $this->read("SELECT * FROM ".self::$entity." WHERE id = :id", "id={$reminderId}")->fetchObject(__CLASS__);
-        return $this;
+        
+        return $reminderId;
 
     }
 

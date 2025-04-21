@@ -36,7 +36,7 @@ class LoginController extends Controller
             {
                 $session = $this->session();
 
-                $session->set("user_auth", [$findedUser->name, $findedUser->password]);
+                $session->set("user_auth", ['user_id'=>$findedUser->id,'user_name'=>$findedUser->name, 'user_password'=>$findedUser->password]);
 
                 header("Location: home");
 

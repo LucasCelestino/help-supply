@@ -56,7 +56,12 @@ $router->post("/controle-pastas/adicionar", "FolderController:store");
 $router->get("/controle-pastas/pesquisar", "FolderController:search");
 
 // LEMBRETES
-
+$router->get("/lembretes", "ReminderController:index");
+$router->get("/lembretes/adicionar", "ReminderController:create");
+$router->post("/lembretes/adicionar", "ReminderController:store");
+$router->get("/lembretes/editar/{id}", "ReminderController:edit");
+$router->post("/lembretes/editar", "ReminderController:update");
+$router->get("/lembretes/excluir/{id}", "ReminderController:destroy");
 
 // PERFIL
 
