@@ -60,6 +60,48 @@ class ShipController extends Controller
         $this->render('ship-supply', 'ship-supply.show', ['ship'=>$shipLoaded]);
     }
 
+    public function search()
+    {
+        if(!isset($_GET['search']))
+        {
+            header("Location: ".APP_URL."/navios-fornecidos");
+            die();
+        }
+
+        $search = $_GET['search'];
+
+        $ship = $this->model('ShipModel');
+        $lastSupplies = $ship->search($search);
+
+        if(is_null($lastSupplies))
+        {
+            header("Location: ".APP_URL."/navios-fornecidos");
+            die();
+        }
+
+        $itemsPerPage = 15;
+
+        // Página atual (vinda da URL)
+        $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+        $page = max($page, 1); // não deixa a página ser menor que 1
+
+        // Calcula total de páginas
+        $totalItems = count($lastSupplies);
+        $totalPages = ceil($totalItems / $itemsPerPage);
+
+        // Ajusta a página para não passar do total
+        if ($page > $totalPages) {
+            $page = $totalPages;
+        }
+
+        // Calcula o offset
+        $offset = ($page - 1) * $itemsPerPage;
+
+        $lastSuppliesOficial = $ship->all(15,$offset);
+
+        $this->render('ship-supply', 'ship-supply.index', ['last_supplies'=>$lastSupplies]);
+    }
+
     /**
      * Show the form for creating a new resource.
      */

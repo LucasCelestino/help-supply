@@ -153,7 +153,7 @@
                           <?php foreach($last_supplies as $lastSupply): ?>
                           <tr>
                             <th scope="row" class="px-3"><?=$lastSupply->id;?></th>
-                            <td><?=$lastSupply->ship_name;?></td>
+                            <td><?=$lastSupply->name;?></td>
                             <td><?=$lastSupply->acronym;?></td>
                             <td><?=$lastSupply->ship_harbor;?></td>
                             <td><?=$lastSupply->ship_type_name;?></td>
@@ -167,9 +167,9 @@
                             </td>
                             <td class="infos p-0">
                                 <div class="d-flex py-1">
-                                    <a href="<?=APP_URL;?>/navios-fornecidos/exibir/<?=$lastSupply->id;?>" class="btn btn-success" style="width: 80px; margin-right:10px !important;">Exibir</a>
-                                    <a href="<?=APP_URL;?>/navios-fornecidos/editar/<?=$lastSupply->id;?>" class="btn btn-warning" style="width: 80px; margin-right:10px !important;">Editar</a>
-                                    <a href="<?=APP_URL;?>/navios-fornecidos/excluir/<?=$lastSupply->id;?>" class="btn btn-danger" style="width: 80px; margin-right:10px !important;">Excluir</a>
+                                    <a href="<?=APP_URL;?>/exibir/<?=$lastSupply->id;?>" class="btn btn-success" style="width: 80px; margin-right:10px !important;">Exibir</a>
+                                    <a href="<?=APP_URL;?>/editar/<?=$lastSupply->id;?>" class="btn btn-warning" style="width: 80px; margin-right:10px !important;">Editar</a>
+                                    <a href="<?=APP_URL;?>/excluir/<?=$lastSupply->id;?>" class="btn btn-danger" style="width: 80px; margin-right:10px !important;">Excluir</a>
                                 </div>
                             </td>
                           </tr>

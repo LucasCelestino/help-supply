@@ -37,6 +37,8 @@ $router->post("/navios-fornecidos/adicionar", "ShipController:store");
 $router->get("/navios-fornecidos/adicionar", "ShipController:create");
 $router->post("/navios-fornecidos/adicionar", "ShipController:store");
 
+$router->get("/navios-fornecidos/pesquisar", "ShipController:search");
+
 
 // $router->get("/users/{id}", "UserController:show");
 

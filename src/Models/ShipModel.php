@@ -108,16 +108,23 @@ class ShipModel extends Model
      *
      * @return ShipModel|null
      */
-    public function search(string $search, String $column, string $columns = '*'): ?ShipModel
+    public function search(string $search, string $columns = '*')
     {
-        $find = $this->read("SELECT {$columns} FROM ".self::$entity." WHERE $column LIKE ':$column%' ", "$column={$search}");
+        $find = $this->read("SELECT ships.id, ships.`name` AS ship_name,acronym,harbor,ship_type.`name` AS ship_type_name, ships.supply_date, ship_responsibles.`name` AS ship_first_responsible, 
+        ship_second_responsibles.`name` AS ship_second_responsible, ship_regime.`name` AS ship_regime, ships.`status`, harbors.`name` AS ship_harbor, ships.created_at 
+        FROM ships
+        INNER JOIN harbors ON ships.harbor = harbors.id
+        LEFT JOIN ship_type ON ships.type = ship_type.id
+        LEFT JOIN ship_responsibles ON ships.responsible = ship_responsibles.id 
+        LEFT JOIN ship_second_responsibles ON ships.second_responsible = ship_second_responsibles.id 
+        LEFT JOIN ship_regime ON ships.regime = ship_regime.id WHERE ships.`name` LIKE CONCAT('%', :search, '%')", "search={$search}");
 
         if($this->fail() || !$find->rowCount())
         {
             return null;
         }
 
-        return $find->fetchObject(__CLASS__);
+        return $find->fetchAll(\PDO::FETCH_CLASS, __CLASS__);
     }
 
     /**
