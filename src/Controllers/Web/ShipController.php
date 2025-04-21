@@ -119,12 +119,20 @@ class ShipController extends Controller
         $shipSecondResponsible = $secondResponsible->all();
         $shipRegime = $regime->all();
 
+        $emptyField = false;
+
+        if(isset($_GET['empty_field']) && $_GET['empty_field'] == true)
+        {
+            $emptyField = true;
+        }
+
         $this->render('ship-supply', 'ship-supply-create', [
         'ship_type'=>$shipType,
         'ship_harbor'=>$shipHarbors,
         'ship_responsible'=>$shipResponsible,
         'ship_second_responsible'=>$shipSecondResponsible,
         'ship_regime'=>$shipRegime,
+        'empty_field'=>$emptyField
         ]);
     }
 
@@ -142,6 +150,23 @@ class ShipController extends Controller
         $shipSecondResponsible = $_POST['ship-second-responsible'];
         $shipRegime = $_POST['ship-regime'];
         $shipStatus = $_POST['ship-status'];
+
+        if((empty($shipName) || !isset($shipName)) || (empty($shipAcronym) || !isset($shipAcronym))
+        || (empty($shipHarbor) || !isset($shipHarbor)) || (empty($shipType) || !isset($shipType))
+        || (empty($supplyDate) || !isset($supplyDate)) || (empty($shipResponsible) || !isset($shipResponsible))
+        || (empty($shipRegime) || !isset($shipRegime)) || (!isset($shipStatus))
+        )
+        {
+            $script = "<script>
+            window.location = '".APP_URL."/navios-fornecidos/adicionar?empty_field=true';</script>";
+            echo $script;
+            die();
+        }
+
+        if($shipSecondResponsible == "-")
+        {
+            $shipSecondResponsible = null;
+        }
 
         $ship = $this->model('ShipModel');
 

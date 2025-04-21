@@ -10,6 +10,9 @@
                         <a href="<?=APP_URL?>/navios-fornecidos" class="text-decoration-none text-white fw-bold" style="margin-right: 10px;">Voltar</a>
                         <p class="p-0 m-0" style="margin-right: 10px;">Adicionar Novo Fornecimento</p>
                     </div>
+                    <?php if($empty_field): ?>
+                        <p class="text-danger p-0 my-3" style="font-size:15px;">Preencha todos os campos antes de adicionar um fornecimento.</p>
+                    <?php endif; ?>
                     <form action="<?=APP_URL?>/navios-fornecidos/adicionar" method="post">
                         <div class="form-group d-flex flex-column mb-4">
                             <label for="ship-name" class="mb-2">Nome do navio:</label>
@@ -77,7 +80,9 @@
                                 <option value="1">Aguardando</option>
                             </select>
                         </div>
-                        <button type="submit" class="btn btn-success" style="width: 150px;">Adicionar</button>
+                        <div class="d-flex align-items-center">
+                        <button type="submit" class="btn btn-success" style="width: 150px; margin-right:20px;">Adicionar</button>
+                        </div>
                     </form>
                   </div>
                 </div>
