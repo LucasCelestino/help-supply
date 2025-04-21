@@ -185,17 +185,20 @@
                   <nav aria-label="Page navigation example">
                     <ul class="pagination border-0">
                       <li class="page-item border-0">
-                        <a class="page-link paginacao-item" href="#" aria-label="Previous">
+                        <?php if ($page > 1): ?>
+                        <a href="?page=<?= $page - 1 ?>">← Previous</a>
+                        <?php endif; ?>
+                        <!-- <a class="page-link paginacao-item" href="<?=APP_URL;?>/navios-fornecidos?page=previous" aria-label="Previous">
                           <span aria-hidden="true">&laquo;</span>
-                        </a>
-                      </li>
-                      <li class="page-item paginacao-li"><a class="page-link paginacao-item" href="#">1</a></li>
-                      <li class="page-item"><a class="page-link paginacao-item" href="#">2</a></li>
-                      <li class="page-item"><a class="page-link paginacao-item" href="#">3</a></li>
+                        </a> -->
+                      </li> 
                       <li class="page-item">
-                        <a class="page-link paginacao-item" href="#" aria-label="Next">
+                        <?php if ($page < $totalPages): ?>
+                        <a href="?page=<?= $page + 1 ?>" style="margin-left:10px;">Next →</a>
+                        <?php endif; ?>
+                        <!-- <a class="page-link paginacao-item" href="<?=APP_URL;?>/navios-fornecidos?page=next" aria-label="Next">
                           <span aria-hidden="true">&raquo;</span>
-                        </a>
+                        </a> -->
                       </li>
                     </ul>
                   </nav>

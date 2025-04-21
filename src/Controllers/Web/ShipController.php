@@ -19,10 +19,29 @@ class ShipController extends Controller
     public function index()
     {
         $ship = $this->model('ShipModel');
+        $lastSupplies = $ship->all(1000000,0);
 
-        $lastSupplies = $ship->all(15,0);
+        $itemsPerPage = 15;
 
-        $this->render('ship-supply', 'ship-supply.index', ['last_supplies'=>$lastSupplies]);
+        // Página atual (vinda da URL)
+        $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+        $page = max($page, 1); // não deixa a página ser menor que 1
+
+        // Calcula total de páginas
+        $totalItems = count($lastSupplies);
+        $totalPages = ceil($totalItems / $itemsPerPage);
+
+        // Ajusta a página para não passar do total
+        if ($page > $totalPages) {
+            $page = $totalPages;
+        }
+
+        // Calcula o offset
+        $offset = ($page - 1) * $itemsPerPage;
+
+        $lastSuppliesOficial = $ship->all(15,$offset);
+
+        $this->render('ship-supply', 'ship-supply.index', ['last_supplies'=>$lastSuppliesOficial,'page'=>$page,'totalPages'=>$totalPages]);
     }
 
     /**
