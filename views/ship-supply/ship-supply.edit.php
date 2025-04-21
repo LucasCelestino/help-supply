@@ -53,7 +53,6 @@
                         <div class="form-group d-flex flex-column mb-4">
                             <label for="ship_second_responsible" class="mb-2">Segundo responsável pelo navio:</label>
                             <select name="ship_second_responsible" id="ship_second_responsible" class="form-select rounded text-white">
-                                <option>Selecione o segundo responsável pelo navio</option>
                                 <option value="-">-</option>
                                 <?php foreach($ship_second_responsible AS $second_responsible): ?>
                                     <option <?=$ship->ship_second_responsible == $second_responsible->name ? 'selected' : ''?> value="<?=$second_responsible->id;?>"><?=$second_responsible->name;?></option>

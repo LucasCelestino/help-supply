@@ -30,7 +30,7 @@
                     <table class="table">
                         <div class="title pt-3 pb-2 px-2 d-flex">
                             <h2 class="m-0" style="margin-right: 10px !important;">Últimos Navios Fornecidos</h2>
-                            <a class="text-decoration-none text-white sdsodokds" style="font-size: 13px;" href="#">Ver Mais</a>
+                            <a class="text-decoration-none text-white sdsodokds" style="font-size: 13px;" href="<?=APP_URL?>/navios-fornecidos">Ver Mais</a>
                         </div>
                         <thead>
                           <tr>
@@ -41,7 +41,6 @@
                             <th>Tipo</th>
                             <th>Data de Fornecimento</th>
                             <th>Status</th>
-                            <th>Opções</th>
                           </tr>
                         </thead>
                         <?php if(isset($last_supplies) && !empty($last_supplies)): ?>
@@ -49,9 +48,9 @@
                           <?php foreach($last_supplies as $lastSupply): ?>
                           <tr>
                             <th scope="row" class="px-3"><?=$lastSupply->id;?></th>
-                            <td class="text-uppercase"><?=$lastSupply->ship_name;?></td>
+                            <td><?=$lastSupply->ship_name;?></td>
                             <td><?=$lastSupply->acronym;?></td>
-                            <td><?=$lastSupply->harbor;?></td>
+                            <td><?=$lastSupply->ship_harbor;?></td>
                             <td><?=$lastSupply->ship_type_name;?></td>
                             <td><?=date('d/m/Y', strtotime($lastSupply->supply_date));?></td>
                             <td class="infos">
@@ -60,9 +59,6 @@
                                 <?php else: ?>
                                     <p class="p-0 m-0 bg-danger">Aguardando</p>
                                 <?php endif; ?>
-                            </td>
-                            <td class="infos">
-                                <a href="#">Ver detalhes</a>
                             </td>
                           </tr>
                           <?php endforeach; ?>
@@ -84,10 +80,6 @@
                             <div class="card-body">
                               <h5 class="card-title"><?=$lastReminder->reminder;?></h5>
                               <p class="card-text">Criado em: <?=date('d/m/Y', strtotime($lastReminder->created_at));?></p>
-                              <div class="d-flex">
-                                <a href="#" class="btn btn-danger btn-lasts-cards">Editar</a>
-                                <a href="#" class="btn btn-warning btn-lasts-cards">Excluir</a>
-                              </div>
                             </div>
                         </div>
                         <?php endforeach; ?>

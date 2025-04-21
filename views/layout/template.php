@@ -26,7 +26,7 @@
                             <img src="<?=APP_URL?>/public/assets/images/user.png" alt="hugenerd" width="55" height="55" class="rounded-circle">
                             <div class="d-flex flex-column">
                                 <span class="d-none d-sm-inline mx-3" style="font-size: 15px;">Bem-vindo</span>
-                                <span class="d-none d-sm-inline mx-3" style="font-size: 13px;">Lucas Celestino</span>
+                                <span class="d-none d-sm-inline mx-3" style="font-size: 13px;"><?=$_SESSION['user_auth']->user_name;?></span>
                             </div>
                         </a>
                         <!-- <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
