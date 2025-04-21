@@ -64,5 +64,7 @@ $router->post("/lembretes/editar", "ReminderController:update");
 $router->get("/lembretes/excluir/{id}", "ReminderController:destroy");
 
 // PERFIL
+$router->get("/perfil", "ProfileController:index");
+$router->post("/perfil/editar", "ProfileController:update");
 
 $router->dispatch();

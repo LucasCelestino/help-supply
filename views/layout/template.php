@@ -23,7 +23,7 @@
                 <div class="d-flex flex-column align-items-center align-items-sm-start mx-1 pt-2 text-light min-vh-100 pt-5 menu-wrapper">
                     <div class="dropdown pb-4">
                         <a class="d-flex align-items-center text-white text-decoration-none" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="<?=APP_URL?>/public/assets/images/file.png" alt="hugenerd" width="55" height="55" class="rounded-circle">
+                            <img src="<?=APP_URL?>/public/assets/images/user.png" alt="hugenerd" width="55" height="55" class="rounded-circle">
                             <div class="d-flex flex-column">
                                 <span class="d-none d-sm-inline mx-3" style="font-size: 15px;">Bem-vindo</span>
                                 <span class="d-none d-sm-inline mx-3" style="font-size: 13px;">Lucas Celestino</span>

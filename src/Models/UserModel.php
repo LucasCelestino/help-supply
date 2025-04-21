@@ -18,16 +18,14 @@ class UserModel extends Model
      * @param String $name
      * @param String $login
      * @param String $password
-     * @param String $profile_picture
      *
      * @return UserModel
      */
-    public function bootstrap(String $name, String $login, String $password, String $profile_picture): UserModel
+    public function bootstrap(String $name, String $login, String $password): UserModel
     {
         $this->name = $name;
         $this->login = $login;
         $this->password = $password;
-        $this->profile_picture = $profile_picture;
         return $this;
     }
 
@@ -89,13 +87,13 @@ class UserModel extends Model
     /**
      * @return UserModel|null
      */
-    public function save(): ?UserModel
+    public function save()
     {
 
-        if(!$this->required())
-        {
-            return null;
-        }
+        // if(!$this->required())
+        // {
+        //     return null;
+        // }
 
         // UPDATE USER
         if(!empty($this->id))
@@ -112,11 +110,10 @@ class UserModel extends Model
         // CREATE USER
         else
         {
-            $userId = $this->create("INSERT INTO ".self::$entity." (name,login,password,profile_picture) VALUES (:name,:login,:password,:profile_picture)", $this->safe());
+            $userId = $this->create("INSERT INTO ".self::$entity." (name,login,password) VALUES (:name,:login,:password)", $this->safe());
         }
 
-        $this->data = $this->read("SELECT * FROM ".self::$entity." WHERE id = :id", "id={$userId}")->fetchObject(__CLASS__);
-        return $this;
+        return $userId;
 
     }
 
