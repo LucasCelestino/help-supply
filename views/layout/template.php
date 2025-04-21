@@ -43,50 +43,50 @@
                         <div class="border-menu">
                             <li class="d-flex align-items-center item-menu">
                                 <img src="<?=APP_URL?>/public/assets/images/home.png" alt="Home" width="24" height="24">
-                                <a href="navios-fornecidos.html"  class="nav-link align-middle text-light">
-                                <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">HOME</span> </a>
+                                <a href="<?=APP_URL?>/home"  class="nav-link align-middle text-light">
+                                <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline text-uppercase">Home</span> </a>
                             </li>
                         </div>
                         <div class="border-menu">
                             <li class="d-flex align-items-center item-menu">
                                 <img src="<?=APP_URL?>/public/assets/images/pirate-ship 6.png" alt="Home" width="24" height="24">
-                                <a href="navios-fornecidos.html"  class="nav-link align-middle text-light">
-                                <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">NAVIOS FORNECIDOS</span> </a>
+                                <a href="<?=APP_URL?>/navios-fornecidos"  class="nav-link align-middle text-light">
+                                <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline text-uppercase">Navios Fornecidos</span> </a>
                             </li>
                         </div>
                         <div class="border-menu">
                         <li class="d-flex align-items-center item-menu">
                             <img src="<?=APP_URL?>/public/assets/images/file-and-folder 2.png" alt="Controle de Pastas" width="24" height="24">
-                            <a href="#submenu1" data-bs-toggle="collapse" class="nav-link align-middle text-light">
-                            <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">CONTROLE DE PASTAS</span> </a>
+                            <a href="<?=APP_URL?>/controle-pastas"  class="nav-link align-middle text-light">
+                            <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline text-uppercase">Controle de Pastas</span> </a>
                         </li>
                         </div>
                         <div class="border-menu">
                         <li class="d-flex align-items-center item-menu">
                             <img src="<?=APP_URL?>/public/assets/images/lembrete-2.png" alt="Lembretes" width="24" height="24">
-                            <a href="#submenu1" data-bs-toggle="collapse" class="nav-link align-middle text-light">
-                            <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">LEMBRETES</span> </a>
+                            <a href="<?=APP_URL?>/lembretes"  class="nav-link align-middle text-light">
+                            <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline text-uppercase">Lembretes</span> </a>
                         </li>
                         </div>
                         <div class="border-menu">
                         <li class="d-flex align-items-center item-menu">
-                            <img src="<?=APP_URL?>/public/assets/images/sair-2.png" alt="Perfil" width="24" height="24">
-                            <a href="#submenu1" data-bs-toggle="collapse" class="nav-link align-middle text-light">
-                            <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">PERFIL</span> </a>
+                            <img src="<?=APP_URL?>/public/assets/images/do-utilizador 2.png" alt="Perfil" width="24" height="24">
+                            <a href="<?=APP_URL?>/perfil"  class="nav-link align-middle text-light">
+                            <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline text-uppercase">Perfil</span> </a>
                         </li>
                         </div>
                         <div class="border-menu">
                         <li class="d-flex align-items-center item-menu">
                             <img src="<?=APP_URL?>/public/assets/images/utilities-1.png" alt="Utilidades" width="24" height="24">
-                            <a href="#submenu1" data-bs-toggle="collapse" class="nav-link align-middle text-light">
-                            <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">UTILIDADES</span> </a>
+                            <a href="#" aria-disabled="true" data-bs-toggle="collapse" class="nav-link align-middle text-light disabled">
+                            <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline text-secondary text-uppercase">Utilidades</span> </a>
                         </li>
                         </div>
                         <div class="border-menu">
                         <li class="d-flex align-items-center item-menu">
                             <img src="<?=APP_URL?>/public/assets/images/sair-2.png" alt="Sair" width="24" height="24">
-                            <a href="#submenu1" data-bs-toggle="collapse" class="nav-link align-middle text-light">
-                            <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">SAIR</span> </a>
+                            <a href="<?=APP_URL?>/loggout"  class="nav-link align-middle text-light">
+                            <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline text-uppercase">Sair</span> </a>
                         </li>
                         </div>
                     </ul>
