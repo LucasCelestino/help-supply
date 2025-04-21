@@ -22,15 +22,14 @@ class FolderModel extends Model
      * @param String $supply_date
      * @param String $receipt_date
      * @param Integer $status
-     * @param Integer $ship_regime
      * @param Integer $pending_reason
      * @param Integer $folder_responsible
      *
      * @return FolderModel
      */
     public function bootstrap(String $invoice_number, String $ship_name, String $ship_acronym, 
-    Integer $customer, String $supply_date, Integer $receipt_date, Integer $status,
-    Integer $ship_regime, Integer $pending_reason, Integer $folder_responsible): FolderModel
+    $customer, String $supply_date,$receipt_date,$status, 
+    $pending_reason,$folder_responsible): FolderModel
     {
         $this->invoice_number = $invoice_number;
         $this->ship_name = $ship_name;
@@ -39,7 +38,6 @@ class FolderModel extends Model
         $this->supply_date = $supply_date;
         $this->receipt_date = $receipt_date;
         $this->status = $status;
-        $this->ship_regime = $ship_regime;
         $this->pending_reason = $pending_reason;
         $this->folder_responsible = $folder_responsible;
         return $this;
@@ -52,6 +50,32 @@ class FolderModel extends Model
      * @return FolderModel|null
      */
     public function load(int $id, string $columns = '*'): ?FolderModel
+    {
+        $load = $this->read("SELECT 
+            folders.id, 
+            invoice_number, 
+            ship_name, 
+            ship_acronym, 
+            customers.`name` AS customer_name, 
+            supply_date, 
+            receipt_date, 
+            folder_status.`id` AS folder_status_id, 
+            folder_status.`name` AS folder_status_name, 
+            pending_reason, 
+            folder_responsible AS folder_responsible_name
+            FROM ".self::$entity." 
+            INNER JOIN customers ON folders.customer = customers.id 
+            LEFT JOIN folder_status ON folders.status = folder_status.id WHERE folders.id = :id", "id={$id}");
+
+        if($this->fail() || !$load->rowCount())
+        {
+            return null;
+        }
+
+        return $load->fetchObject(__CLASS__);
+    }
+
+    public function loadEdit($id, string $columns = '*')
     {
         $load = $this->read("SELECT {$columns} FROM ".self::$entity." WHERE id = :id", "id={$id}");
 
@@ -105,16 +129,29 @@ class FolderModel extends Model
      *
      * @return FolderModel|null
      */
-    public function search(string $search, String $column, string $columns = '*'): ?FolderModel
+    public function search(string $search, string $columns = '*')
     {
-        $find = $this->read("SELECT {$columns} FROM ".self::$entity." WHERE $column LIKE ':$column%' ", "$column={$search}");
+        $find = $this->read("SELECT 
+            folders.id, 
+            invoice_number, 
+            ship_name, 
+            ship_acronym, 
+            customers.`name` AS customer_name, 
+            supply_date, 
+            receipt_date, 
+            folder_status.`id` AS folder_status_id, 
+            pending_reason, 
+            folder_responsible AS folder_responsible_name
+            FROM folders
+            INNER JOIN customers ON folders.customer = customers.id 
+            LEFT JOIN folder_status ON folders.status = folder_status.id WHERE folders.`invoice_number` LIKE CONCAT('%', :search, '%') OR folders.`ship_acronym` LIKE CONCAT('%', :search, '%')", "search={$search}");
 
         if($this->fail() || !$find->rowCount())
         {
             return null;
         }
 
-        return $find->fetchObject(__CLASS__);
+        return $find->fetchAll(\PDO::FETCH_CLASS, __CLASS__);
     }
 
     /**
@@ -124,9 +161,24 @@ class FolderModel extends Model
      *
      * @return FolderModel|null
      */
-    public function all(int $limit = 30, int $offset = 0, string $columns = '*'): Array
+    public function all(int $limit = 30, int $offset = 0, string $columns = '*')
     {
-        $all = $this->read("SELECT {$columns} FROM ".self::$entity." LIMIT :limit OFFSET :offset", "limit={$limit}&offset={$offset}");
+        $all = $this->read("SELECT 
+            folders.id, 
+            invoice_number, 
+            ship_name, 
+            ship_acronym, 
+            customers.`name` AS customer_name, 
+            supply_date, 
+            receipt_date, 
+            folder_status.`id` AS folder_status_id, 
+            pending_reason, 
+            folder_responsible AS folder_responsible_name
+            FROM ".self::$entity." 
+            INNER JOIN customers ON folders.customer = customers.id 
+            LEFT JOIN folder_status ON folders.status = folder_status.id 
+            ORDER BY folders.id DESC 
+            LIMIT :limit OFFSET :offset", "limit={$limit}&offset={$offset}");
 
         if($this->fail() || !$all->rowCount())
         {
@@ -139,12 +191,12 @@ class FolderModel extends Model
     /**
      * @return FolderModel|null
      */
-    public function save(): ?FolderModel
+    public function save()
     {
-        if(!$this->required())
-        {
-            return null;
-        }
+        // if(!$this->required())
+        // {
+        //     return null;
+        // }
 
         // UPDATE FOLDER
         if(!empty($this->id))
@@ -162,12 +214,11 @@ class FolderModel extends Model
         else
         {
             $folderId = $this->create("INSERT INTO ".self::$entity." (invoice_number, ship_name, ship_acronym, customer, supply_date, 
-            receipt_date, status, regime, ship_regime, pending_reason, folder_responsible) VALUES
-            (:invoice_number, :ship_name, :ship_acronym, :customer, :supply_date, :receipt_date, :status, :regime, :ship_regime, :pending_reason, :folder_responsible)", $this->safe());
+            receipt_date, status, pending_reason, folder_responsible) VALUES
+            (:invoice_number, :ship_name, :ship_acronym, :customer, :supply_date, :receipt_date, :status, :pending_reason, :folder_responsible)", $this->safe());
         }
-
-        $this->data = $this->read("SELECT * FROM ".self::$entity." WHERE id = :id", "id={$folderId}")->fetchObject(__CLASS__);
-        return $this;
+        
+        return $folderId;
     }
 
     /**

@@ -81,6 +81,7 @@
                           </tr>
                           </div>
                           <?php endforeach; ?>
+                          
                         </tbody>
                         <?php endif; ?>
                       </table>

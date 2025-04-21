@@ -223,16 +223,21 @@ class ShipController extends Controller
      */
     public function update(array $data)
     {
-        $id = $_POST['ship-id'];
-        $shipName = $_POST['ship-name'];
-        $shipAcronym =  $_POST['ship-acronym'];
-        $shipHarbor = $_POST['ship-harbor'];
-        $shipType = $_POST['ship-type'];
-        $supplyDate = $_POST['ship-supply'];
-        $shipResponsible = $_POST['ship-responsible'];
-        $shipSecondResponsible = $_POST['ship-second-responsible'];
-        $shipRegime = $_POST['ship-regime'];
-        $shipStatus = $_POST['ship-status'];
+        $id = $_POST['ship_id'];
+        $shipName = $_POST['ship_name'];
+        $shipAcronym =  $_POST['ship_acronym'];
+        $shipHarbor = $_POST['ship_harbor'];
+        $shipType = $_POST['ship_type'];
+        $supplyDate = $_POST['ship_supply'];
+        $shipResponsible = $_POST['ship_responsible'];
+        $shipSecondResponsible = $_POST['ship_second_responsible'];
+        $shipRegime = $_POST['ship_regime'];
+        $shipStatus = $_POST['ship_status'];
+
+        if($shipSecondResponsible == "-")
+        {
+            $shipSecondResponsible = "10";
+        }
 
         $ship = $this->model('ShipModel');
 
