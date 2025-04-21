@@ -110,7 +110,26 @@ class ShipController extends Controller
 
         $shipLoaded = $ship->load($id);
 
-        $this->render('ship-supply', 'ship-supply.edit', ['ship'=>$shipLoaded]);
+        $type = $this->model('ShipTypeModel');
+        $harbor = $this->model('ShipHarbor');
+        $responsible = $this->model('ShipResponsibleModel');
+        $secondResponsible = $this->model('ShipSecondResponsibleModel');
+        $regime = $this->model('ShipRegimeModel');
+
+        $shipType = $type->all(100);
+        $shipHarbors = $harbor->all(100);
+        $shipResponsible = $responsible->all();
+        $shipSecondResponsible = $secondResponsible->all();
+        $shipRegime = $regime->all();
+
+        $this->render('ship-supply', 'ship-supply.edit', [
+        'ship'=>$shipLoaded,
+        'ship_type'=>$shipType,
+        'ship_harbor'=>$shipHarbors,
+        'ship_responsible'=>$shipResponsible,
+        'ship_second_responsible'=>$shipSecondResponsible,
+        'ship_regime'=>$shipRegime,
+        ]);
     }
 
     /**

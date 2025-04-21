@@ -93,11 +93,11 @@
                     <div class="head d-flex align-items-center py-2 mb-2">
                         <img src="<?=APP_URL?>/public/assets/images/seta-direita-2.png" style="margin-right: 10px;">
                         <a href="<?=APP_URL;?>/navios-fornecidos" class="text-decoration-none text-white fw-bold" style="margin-right: 10px;">Voltar</a>
-                        <p class="p-0 m-0" style="margin-right: 10px;"><?=$ship->name?>  <?=$ship->acronym?></p>
+                        <p class="p-0 m-0" style="margin-right: 10px;"><?=$ship->ship_name?>  <?=$ship->acronym?></p>
                     </div>
                     <div class="info-wrapper d-flex align-items-center py-2 mb-4">
                         <p class="px-2 my-0 fw-bold">Nome do navio:</p>
-                        <p class="my-0"><?=$ship->name;?></p>
+                        <p class="my-0"><?=$ship->ship_name;?></p>
                     </div>
                     <div class="info-wrapper d-flex align-items-center py-2 mb-4">
                         <p class="px-2 my-0 fw-bold">Sigla:</p>
@@ -105,23 +105,23 @@
                     </div>
                     <div class="info-wrapper d-flex align-items-center py-2 mb-4">
                         <p class="px-2 my-0 fw-bold">Porto:</p>
-                        <p class="my-0"><?=$ship->harbor;?></p>
+                        <p class="my-0"><?=$ship->ship_harbor;?></p>
                     </div>
                     <div class="info-wrapper d-flex align-items-center py-2 mb-4">
                         <p class="px-2 my-0 fw-bold">Tipo de fornecimento:</p>
-                        <p class="my-0"><?=$ship->type;?></p>
+                        <p class="my-0"><?=$ship->ship_type_name;?></p>
                     </div>
                     <div class="info-wrapper d-flex align-items-center py-2 mb-4">
                         <p class="px-2 my-0 fw-bold">Data de fornecimento:</p>
-                        <p class="my-0"><?=$ship->supply_date;?></p>
+                        <p class="my-0"><?=date('d/m/Y', strtotime($ship->supply_date));?></p>
                     </div>
                     <div class="info-wrapper d-flex align-items-center py-2 mb-4">
                         <p class="px-2 my-0 fw-bold">Responsável pelo navio:</p>
-                        <p class="my-0"><?=$ship->responsible;?> / <?=$ship->second_responsible;?></p>
+                        <p class="my-0"><?=$ship->ship_first_responsible;?> / <?=$ship->ship_second_responsible;?></p>
                     </div>
                     <div class="info-wrapper d-flex align-items-center py-2 mb-4">
                         <p class="px-2 my-0 fw-bold">Regime:</p>
-                        <p class="my-0"><?=$ship->regime;?></p>
+                        <p class="my-0"><?=$ship->ship_regime;?></p>
                     </div>
                     <div class="info-wrapper d-flex align-items-center py-2 mb-4">
                         <p class="px-2 my-0 fw-bold">Status:</p>

@@ -107,7 +107,7 @@
                     <form action="#" method="post">
                         <div class="form-group d-flex flex-column mb-4">
                             <label for="ship-name" class="mb-2">Nome do navio:</label>
-                            <input type="text" name="ship-name" id="ship-name" class="text-white px-1 py-1 rounded" value="<?=$ship->name;?>">
+                            <input type="text" name="ship-name" id="ship-name" class="text-white px-1 py-1 rounded" value="<?=$ship->ship_name;?>">
                         </div>
                         <div class="form-group d-flex flex-column mb-4">
                             <label for="acronym" class="mb-2">Sigla:</label>
@@ -116,23 +116,19 @@
                         <div class="form-group d-flex flex-column mb-4">
                             <label for="acronym" class="mb-2">Porto:</label>
                             <select name="" id="" class="form-select rounded text-white">
-                                <option selected>Selecione o porto de fornecimento</option>
-                                <option value="1">Santos</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                                <option>Selecione o porto de fornecimento</option>
+                                <?php foreach($ship_harbor AS $harbor): ?>
+                                    <option <?=$ship->ship_harbor == $harbor->name ? 'selected' : ''?> value="<?=$harbor->id;?>"><?=$harbor->name;?></option>
+                                <?php endforeach; ?>
                             </select>
                         </div>
                         <div class="form-group d-flex flex-column mb-4">
                             <label for="acronym" class="mb-2">Tipo de fornecimento:</label>
                             <select name="" id="" class="form-select rounded text-white">
-                                <option selected>Selecione o tipo do fornecimento</option>
-                                <option value="1">P</option>
-                                <option value="2">B</option>
-                                <option value="3">T</option>
-                                <option value="3">T/P</option>
-                                <option value="3">T/B</option>
-                                <option value="3">T/P/B</option>
-                                <option value="3">P/B</option>
+                            <option>Selecione o tipo do fornecimento</option>
+                                <?php foreach($ship_type AS $type): ?>
+                                    <option <?=$ship->ship_type_name == $type->name ? 'selected' : ''?> value="<?=$type->id;?>"><?=$type->name;?></option>
+                                <?php endforeach; ?>
                             </select>
                         </div>
                         <div class="form-group d-flex flex-column mb-4">
@@ -142,47 +138,39 @@
                         <div class="form-group d-flex flex-column mb-4">
                             <label for="acronym" class="mb-2">Responsável pelo navio:</label>
                             <select name="" id="" class="form-select rounded text-white">
-                                <option selected>Selecione o responsável pelo navio</option>
-                                <option value="1">Antonio</option>
-                                <option value="2">Alan</option>
-                                <option value="3">Glerson</option>
-                                <option value="3">Giulia</option>
-                                <option value="3">Johnny</option>
-                                <option value="3">João Pedro</option>
-                                <option value="3">João Relva</option>
-                                <option value="3">Lucas Prado</option>
-                                <option value="3">Pedro</option>
+                                <option>Selecione o responsável pelo navio</option>
+                                <?php foreach($ship_responsible AS $responsible): ?>
+                                    <option <?=$ship->ship_first_responsible == $responsible->name ? 'selected' : ''?> value="<?=$responsible->id;?>"><?=$responsible->name;?></option>
+                                <?php endforeach; ?>
                             </select>
                         </div>
                         <div class="form-group d-flex flex-column mb-4">
                             <label for="acronym" class="mb-2">Segundo responsável pelo navio:</label>
                             <select name="" id="" class="form-select rounded text-white">
-                                <option selected>Selecione o segundo responsável pelo navio</option>
-                                <option value="1">Antonio</option>
-                                <option value="2">Alan</option>
-                                <option value="3">Glerson</option>
-                                <option value="3">Giulia</option>
-                                <option value="3">Johnny</option>
-                                <option value="3">João Pedro</option>
-                                <option value="3">João Relva</option>
-                                <option value="3">Lucas Prado</option>
-                                <option value="3">Pedro</option>
+                                <option>Selecione o segundo responsável pelo navio</option>
+                                <?php foreach($ship_second_responsible AS $second_responsible): ?>
+                                    <option <?=$ship->ship_second_responsible == $second_responsible->name ? 'selected' : ''?> value="<?=$second_responsible->id;?>"><?=$second_responsible->name;?></option>
+                                <?php endforeach; ?>
                             </select>
                         </div>
                         <div class="form-group d-flex flex-column mb-4">
                             <label for="acronym" class="mb-2">Tipo de regime:</label>
                             <select name="" id="" class="form-select rounded text-white">
-                                <option selected>Selecione o regime do navio</option>
-                                <option value="1">Longo Curso</option>
-                                <option value="2">Cabotagem</option>
+                                <option>Selecione o regime do navio</option>
+                                <?php foreach($ship_regime AS $regime): ?>
+                                    <option <?=$ship->ship_regime == $regime->name ? 'selected' : ''?> value="<?=$regime->id;?>"><?=$regime->name;?></option>
+                                <?php endforeach; ?>
                             </select>
                         </div>
                         <div class="form-group d-flex flex-column mb-4">
                             <label for="acronym" class="mb-2">Status:</label>
                             <select name="" id="" class="form-select rounded text-white">
-                                <option selected>Selecione o status do fornecimento</option>
-                                <option value="1">Aguardando</option>
-                                <option value="2">Recebido</option>
+                                <option>Selecione o status do fornecimento</option>
+                                <?php if($ship->status == 0): ?>
+                                    <option selected value="0">Recebido</option>
+                                <?php else: ?>                                                  
+                                    <option selected value="1">Aguardando</option>
+                                <?php endif; ?>
                             </select>
                         </div>
                         <button type="submit" class="btn btn-success" style="width: 150px;">Editar</button>

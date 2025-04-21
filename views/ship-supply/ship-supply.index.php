@@ -155,7 +155,7 @@
                             <th scope="row" class="px-3"><?=$lastSupply->id;?></th>
                             <td><?=$lastSupply->ship_name;?></td>
                             <td><?=$lastSupply->acronym;?></td>
-                            <td><?=$lastSupply->harbor;?></td>
+                            <td><?=$lastSupply->ship_harbor;?></td>
                             <td><?=$lastSupply->ship_type_name;?></td>
                             <td style="width:230px !important;"><?=date('d/m/Y', strtotime($lastSupply->supply_date));?></td>
                             <td class="infos">

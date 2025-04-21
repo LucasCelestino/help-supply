@@ -47,9 +47,16 @@ class ShipModel extends Model
      *
      * @return ShipModel|null
      */
-    public function load($id, string $columns = '*'): ?ShipModel
+    public function load($id, string $columns = '*')
     {
-        $load = $this->read("SELECT {$columns} FROM ".self::$entity." WHERE id = :id", "id={$id}");
+        $load = $this->read("SELECT ships.id, ships.`name` AS ship_name,acronym,harbor,ship_type.`name` AS ship_type_name, ships.supply_date, ship_responsibles.`name` AS ship_first_responsible, 
+        ship_second_responsibles.`name` AS ship_second_responsible, ship_regime.`name` AS ship_regime, ships.`status`, harbors.`name` AS ship_harbor, ships.created_at 
+        FROM ".self::$entity."
+        INNER JOIN harbors ON ships.harbor = harbors.id
+        LEFT JOIN ship_type ON ships.type = ship_type.id
+        LEFT JOIN ship_responsibles ON ships.responsible = ship_responsibles.id 
+        LEFT JOIN ship_second_responsibles ON ships.second_responsible = ship_second_responsibles.id 
+        LEFT JOIN ship_regime ON ships.regime = ship_regime.id WHERE ships.id = :id", "id={$id}");
 
         if($this->fail() || !$load->rowCount())
         {
@@ -105,8 +112,10 @@ class ShipModel extends Model
     public function all(int $limit = 30, int $offset = 0)
     {
         $all = $this->read("SELECT ships.id, ships.`name` AS ship_name,acronym,harbor,ship_type.`name` AS ship_type_name, ships.supply_date, ship_responsibles.`name` AS ship_first_responsible, 
-        ship_second_responsibles.`name` AS ship_second_responsible, ship_regime.`name` AS ship_regime, ships.`status`, ships.created_at 
-        FROM ".self::$entity." INNER JOIN ship_type ON ships.type = ship_type.id
+        ship_second_responsibles.`name` AS ship_second_responsible, ship_regime.`name` AS ship_regime, ships.`status`, harbors.`name` AS ship_harbor, ships.created_at 
+        FROM ".self::$entity."
+        INNER JOIN harbors ON ships.harbor = harbors.id
+        LEFT JOIN ship_type ON ships.type = ship_type.id
         LEFT JOIN ship_responsibles ON ships.responsible = ship_responsibles.id 
         LEFT JOIN ship_second_responsibles ON ships.second_responsible = ship_second_responsibles.id 
         LEFT JOIN ship_regime ON ships.regime = ship_regime.id
