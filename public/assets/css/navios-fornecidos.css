@@ -64,3 +64,8 @@
     background-color: #0E0E0E !important;
     border: 1px solid #393939;
 }
+
+.ship-item-index
+{
+    background-color: red !important;
+}

@@ -155,6 +155,7 @@
                                 </div>
                             </td>
                           </tr>
+                          </div>
                           <?php endforeach; ?>
                         </tbody>
                         <?php endif; ?>

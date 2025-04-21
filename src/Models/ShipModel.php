@@ -117,7 +117,7 @@ class ShipModel extends Model
         LEFT JOIN ship_type ON ships.type = ship_type.id
         LEFT JOIN ship_responsibles ON ships.responsible = ship_responsibles.id 
         LEFT JOIN ship_second_responsibles ON ships.second_responsible = ship_second_responsibles.id 
-        LEFT JOIN ship_regime ON ships.regime = ship_regime.id WHERE ships.`name` LIKE CONCAT('%', :search, '%')", "search={$search}");
+        LEFT JOIN ship_regime ON ships.regime = ship_regime.id WHERE ships.`name` LIKE CONCAT('%', :search, '%') OR ships.`acronym` LIKE CONCAT('%', :search, '%')", "search={$search}");
 
         if($this->fail() || !$find->rowCount())
         {

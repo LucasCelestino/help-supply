@@ -150,8 +150,10 @@
                                 <option>Selecione o status do fornecimento</option>
                                 <?php if($ship->status == 0): ?>
                                     <option selected value="0">Recebido</option>
+                                    <option value="1">Aguardando</option>
                                 <?php else: ?>                                                  
                                     <option selected value="1">Aguardando</option>
+                                    <option value="0">Recebido</option>
                                 <?php endif; ?>
                             </select>
                         </div>
