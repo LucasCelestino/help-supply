@@ -67,6 +67,24 @@ class ShipModel extends Model
     }
 
     /**
+     * @param int $id
+     * @param string $columns
+     *
+     * @return ShipModel|null
+     */
+    public function loadEdit($id, string $columns = '*')
+    {
+        $load = $this->read("SELECT {$columns} FROM ".self::$entity." WHERE id = :id", "id={$id}");
+
+        if($this->fail() || !$load->rowCount())
+        {
+            return null;
+        }
+
+        return $load->fetchObject(__CLASS__);
+    }
+
+    /**
      * @param string $name
      * @param string $columns
      *

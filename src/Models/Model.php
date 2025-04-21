@@ -170,7 +170,7 @@ abstract class Model
                 $dateSet[] = "{$key} = :{$key}";
             }
 
-            $dateSet = implode(",", $dateSet);
+            $dateSet = implode(", ", $dateSet);
 
             $stmt = Connection::getConnection()->prepare("UPDATE {$entity} SET {$dateSet} WHERE {$terms}");
 

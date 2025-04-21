@@ -135,9 +135,40 @@ class ShipController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update()
+    public function update(array $data)
     {
-        // update
+        $id = $_POST['ship-id'];
+        $shipName = $_POST['ship-name'];
+        $shipAcronym =  $_POST['ship-acronym'];
+        $shipHarbor = $_POST['ship-harbor'];
+        $shipType = $_POST['ship-type'];
+        $supplyDate = $_POST['ship-supply'];
+        $shipResponsible = $_POST['ship-responsible'];
+        $shipSecondResponsible = $_POST['ship-second-responsible'];
+        $shipRegime = $_POST['ship-regime'];
+        $shipStatus = $_POST['ship-status'];
+
+        $ship = $this->model('ShipModel');
+
+        $shipLoaded = $ship->loadEdit($id);
+
+        $shipLoaded->name = $shipName;
+        $shipLoaded->acronym = $shipAcronym;
+        $shipLoaded->harbor = $shipHarbor;
+        $shipLoaded->type = $shipType;
+        $shipLoaded->supply_date = $supplyDate;
+        $shipLoaded->responsible = $shipResponsible;
+        $shipLoaded->second_responsible = $shipSecondResponsible;
+        $shipLoaded->regime = $shipRegime;
+        $shipLoaded->status = $shipStatus;
+
+        if($shipLoaded->save())
+        {
+            $script = "<script>
+            window.location = '".APP_URL."/navios-fornecidos';</script>";
+            echo $script;
+            die();
+        }
     }
 
     /**

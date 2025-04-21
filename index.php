@@ -24,9 +24,16 @@ $router->get("/loggout", "LoginController:loggout");
 
 
 $router->get("/navios-fornecidos", "ShipController:index");
+
 $router->get("/navios-fornecidos/exibir/{id}", "ShipController:show");
-$router->delete("/navios-fornecidos/excluir/{id}", "ShipController:destroy");
+
+$router->get("/navios-fornecidos/excluir/{id}", "ShipController:destroy");
+
 $router->get("/navios-fornecidos/editar/{id}", "ShipController:edit");
+$router->post("/navios-fornecidos/editar", "ShipController:update");
+
+$router->post("/navios-fornecidos/adicionar", "ShipController:store");
+
 $router->get("/navios-fornecidos/adicionar", "ShipController:create");
 $router->post("/navios-fornecidos/adicionar", "ShipController:store");
 
