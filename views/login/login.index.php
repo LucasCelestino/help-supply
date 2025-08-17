@@ -8,6 +8,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil:opsz,wght@10..72,100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -17,8 +23,8 @@
   <body class="d-flex justify-content-center align-items-center">
     
     <div class="login-wrapper rounded py-3 px-4">
-        <h1 class="text-center title text-white text-uppercase fw-bold">HelpSupply</h1>
-        <p class="text-center subtitle text-white">Sistema para gerenciamento de fornecimentos</p>
+        <h1 class="text-center title text-white text-uppercase fw-bold" style="font-family: 'Big Shoulders Stencil', sans-serif !important;">HelpSupply</h1>
+        <p class="text-center subtitle text-white" style="font-family: 'Roboto Condensed', sans-serif !important; font-size:13px; letter-spacing:0.5px;">Sistema para gerenciamento de fornecimentos</p>
         <form action="<?=APP_URL?>/login" method="POST">
             <div class="mb-3">
                 <label for="username" class="form-label text-white">Usuário</label>

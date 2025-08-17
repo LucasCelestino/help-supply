@@ -15,13 +15,20 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil:opsz,wght@10..72,100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   </head>
   <body>
     <div class="container-fluid">
     <div class="row flex-nowrap">
             <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 main-color">
                 <div class="d-flex flex-column align-items-center align-items-sm-start mx-1 pt-2 text-light min-vh-100 pt-5 menu-wrapper">
-                    <div class="dropdown pb-4">
+                <h1 class="text-center  text-white text-uppercase fw-bold w-100 mb-4" style="font-family: 'Big Shoulders Stencil', sans-serif !important;">HelpSupply</h1>
+                    <div class="dropdown pb-3">
                         <a class="d-flex align-items-center text-white text-decoration-none" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
                             <img src="<?=APP_URL?>/public/assets/images/user.png" alt="hugenerd" width="55" height="55" class="rounded-circle">
                             <div class="d-flex flex-column">
@@ -90,6 +97,7 @@
                         </li>
                         </div>
                     </ul>
+                    <p style="color:#757575; font-size:13px;">Feito por <a href="https://github.com/LucasCelestino" target="_blank">Lucas Celestino.</a></p>
                     <hr>
                 </div>
             </div>
